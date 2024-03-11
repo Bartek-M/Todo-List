@@ -1,4 +1,5 @@
 # Todo List
+Fullstack **todo list** website written in **Python** and **TypeScript**. Robust backend is supplied by **Django**. **ReactTS** handles frontend with addition of **Bootstrap** styles. Clients can create their own, personal accounts with multiple todo lists inside. Use **Todo-List** to keep track of whatever you have to do and keep your life organized.
 
 > If you find any bugs, feel free to create a new **issue** in this repository.
 
