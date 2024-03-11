@@ -1,0 +1,27 @@
+{
+    "name": "todo-list",
+    "version": "1.0.0",
+    "description": "Fullstack todo list application",
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "build": "webpack --mode production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Bartek-M/Todo-List.git"
+    },
+    "author": "Bartosz Mroczkowski",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Bartek-M/Todo-List/issues"
+    },
+    "homepage": "https://github.com/Bartek-M/Todo-List#readme",
+    "dependencies": {
+        "@types/react": "^18.2.64",
+        "@types/react-dom": "^18.2.21",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "webpack": "^5.90.3",
+        "webpack-cli": "^5.1.4"
+    }
+}
