@@ -8,26 +8,19 @@ Fullstack **todo list** website written in **Python** and **TypeScript**. Robust
 - Node.js 16 or above
 
 ## Setup 
-Install all dependencies
+Simply run setup.py to install and setup everything
 ```bash
-python -r requirements.txt
-npm install -g typescript
-npm install
-```
-Build JS package
-```bash
-npm run build
-```
-
-Setup Database
-```bash
-python manage.py makemigrations api
-python manage.py migrate
+python setup.py
 ```
 
 > NOTE: This app needs `.env` configuration file. Using `.env.example`, create `.env` file in the main directory. Without this, server may not work correctly.
 >
 > If you want to run a **development** version run `npm run dev` instead.
+
+## Running
+```bash
+python manage.py runserver
+```
 
 ## License
 NOT FOR COMMERCIAL USE 
