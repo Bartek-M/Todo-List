@@ -53,7 +53,7 @@ ROOT_URLCONF = "todo-list.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.todo-list.django.DjangoTemplates",
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -75,7 +75,7 @@ WSGI_APPLICATION = "todo-list.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.todo-list.sqlite3",
+        "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite",
     }
 }
