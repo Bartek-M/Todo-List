@@ -1,10 +1,6 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import {createRoot} from "react-dom/client"
 
-const App: React.FC = () => {
-    return (
-        <h1>Hello, React with TypeScript!</h1>
-    )
-}
+import App from "./App"
 
-ReactDOM.render(<App />, document.getElementById("appMount"))
+const root = createRoot(document.getElementById("appMount"))
+root.render(<App />)

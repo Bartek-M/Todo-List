@@ -8,7 +8,7 @@ module.exports = {
         filename: "[name].js",
     },
     resolve: {
-        extensions: [".ts"],
+        extensions: [".ts", ".tsx"],
         modules: ["node_modules"],
     },
     module: {
