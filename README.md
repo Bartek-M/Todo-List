@@ -15,9 +15,7 @@ Simply run setup.py to install and setup everything
 python setup.py
 ```
 
-> NOTE: This app needs `.env` configuration file. Using `.env.example`, create `.env` file in the main directory. Without this, server may not work correctly.
->
-> If you want to run a **development** version run `npm run dev` instead.
+> **NOTE:** This app needs `.env` configuration files. Checkout `docs/CONF.md` and create `.env` files accordingly. Without those files, application may not work correctly.
 
 ## Running
 ```bash
