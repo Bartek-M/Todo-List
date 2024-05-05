@@ -1,8 +1,12 @@
 from django.urls import path
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponse
 
 
+@login_required
 def get_me(request) -> None:
-    return
+    return JsonResponse(request.user.data(), status=200)
 
 
 def edit_user(request) -> None:
