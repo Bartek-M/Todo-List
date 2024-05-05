@@ -5,8 +5,16 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     email = models.EmailField(max_length=254, blank=False, unique=True)
-    avatar = models.ForeignKey("File", on_delete=models.SET_NULL, null=True)
+    avatar = models.IntegerField(null=True)
     lists = models.ManyToManyField("TodoList")
+
+    def data(self) -> dict:
+        return {
+            "username": self.username,
+            "email": self.email,
+            "avatar": self.avatar,
+            "lists": [lst.data() for lst in self.lists.all()],
+        }
 
     def __repr__(self) -> str:
         return f"[{self.username}] {self.email} - {len(self.lists.all())} lists"
@@ -18,15 +26,33 @@ class TodoList(models.Model):
     items = models.ManyToManyField("Item")
     create_date = models.DateTimeField(default=timezone.now)
 
+    def data(self) -> dict:
+        return {
+            "name": self.name,
+            "create_date": self.create_date,
+        }
+
+    def get_items(self) -> list:
+        return [item.data() for item in self.items.all()]
+
     def __repr__(self) -> str:
         return f"[{self.name}] by {self.author} - {len(self.items.all())} items"
 
 
 class Item(models.Model):
     text = models.TextField(max_length=500)
+    notes = models.TextField(max_length=500)
     todo_list = models.ForeignKey("TodoList", on_delete=models.CASCADE)
     deadline_date = models.DateTimeField(blank=True)
     create_date = models.DateTimeField(default=timezone.now)
+
+    def data(self) -> dict:
+        return {
+            "text": self.text,
+            "notes": self.notes,
+            "deadline_date": self.deadline_date,
+            "create_date": self.create_date,
+        }
 
     def __repr__(self) -> str:
         return f"[{self.id}] from {self.todo_list.name}: {self.text}"
