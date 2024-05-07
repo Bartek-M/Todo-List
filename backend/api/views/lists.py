@@ -17,6 +17,12 @@ def edit_list(request, list_id: int) -> None:
 
 @login_required
 @require_http_methods(["DELETE"])
+def delete_completed(request, list_id: int) -> None:
+    return
+
+
+@login_required
+@require_http_methods(["DELETE"])
 def delete_list(request, list_id: int) -> None:
     return
 

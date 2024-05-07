@@ -41,15 +41,17 @@ class TodoList(models.Model):
 
 class Item(models.Model):
     text = models.TextField(max_length=500)
-    notes = models.TextField(max_length=500)
+    notes = models.TextField(max_length=500, blank=True, null=True)
     todo_list = models.ForeignKey("TodoList", on_delete=models.CASCADE)
-    deadline_date = models.DateTimeField(blank=True)
+    ticked = models.BooleanField(default=False)
+    deadline_date = models.DateTimeField(blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
 
     def data(self) -> dict:
         return {
             "text": self.text,
             "notes": self.notes,
+            "ticked": self.ticked,
             "deadline_date": self.deadline_date,
             "create_date": self.create_date,
         }

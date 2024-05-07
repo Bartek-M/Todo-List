@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
-from api.models import TodoList
+from api.models import TodoList, Item
 from api.forms import ItemForm
 
 
@@ -35,7 +35,13 @@ def add_item(request, list_id: int) -> JsonResponse:
 @login_required
 @require_http_methods(["PATCH"])
 def tick_item(request, list_id: int, item_id: int) -> None:
-    return
+    todo_list = get_object_or_404(TodoList, id=list_id, author=request.user)
+    item = get_object_or_404(Item, id=item_id, todo_list=todo_list)
+
+    item.ticked = not item.ticked
+    item.save()
+
+    return HttpResponse(status=200)
 
 
 @login_required
@@ -47,7 +53,11 @@ def edit_item(request, list_id: int, item_id: int) -> None:
 @login_required
 @require_http_methods(["DELETE"])
 def delete_item(request, list_id: int, item_id: int) -> None:
-    return
+    todo_list = get_object_or_404(TodoList, id=list_id, author=request.user)
+    item = get_object_or_404(Item, id=item_id, todo_list=todo_list)
+
+    item.delete()
+    return HttpResponse(status=200)
 
 
 urlpatterns = [
