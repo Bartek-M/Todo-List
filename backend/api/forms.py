@@ -11,7 +11,7 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ("username", "email", "password")
 
-    def clean(self):
+    def clean(self) -> dict:
         cleaned_data = super().clean()
 
         cleaned_data["username"] = cleaned_data.get("username", "").lower()
@@ -29,7 +29,7 @@ class LoginForm(forms.Form):
     login_data = forms.CharField()
     password = forms.CharField()
 
-    def clean(self):
+    def clean(self) -> dict:
         cleaned_data = super().clean()
 
         login_data = cleaned_data.get("login_data")
@@ -53,7 +53,7 @@ class LoginForm(forms.Form):
         return cleaned_data
 
 
-class ItemForm(forms.Form):
+class ItemForm(forms.ModelForm):
     class Meta:
         modal = Item
         fields = ("text", "notes", "deadline_date")
