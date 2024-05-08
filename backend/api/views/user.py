@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 
 
@@ -12,7 +12,30 @@ def get_me(request) -> None:
 
 @login_required
 @require_http_methods(["PATCH"])
-def change_theme(request) -> None:
+def change_theme(request) -> JsonResponse:
+    theme = request.body.get("theme")
+
+    if theme is None or theme not in [0, 1, 2]:
+        return JsonResponse(
+            {"errors": {"theme": "Incorrect theme value - must be an int [0, 1, 2]"}},
+            status=400,
+        )
+
+    request.user.theme = theme
+    request.user.save()
+
+    return JsonResponse({"theme": theme}, status=200)
+
+
+@login_required
+@require_http_methods(["PATCH"])
+def change_avatar(request) -> None:
+    return
+
+
+@login_required
+@require_http_methods(["PATCH"])
+def change_username(request) -> None:
     return
 
 

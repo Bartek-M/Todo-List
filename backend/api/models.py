@@ -6,6 +6,14 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     email = models.EmailField(max_length=254, blank=False, unique=True)
     avatar = models.IntegerField(null=True)
+    theme = models.PositiveSmallIntegerField(
+        choices=[
+            (0, "auto"),
+            (1, "dark"),
+            (2, "light"),
+        ],
+        default=0,
+    )
     lists = models.ManyToManyField("TodoList")
 
     def data(self) -> dict:
