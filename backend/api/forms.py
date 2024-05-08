@@ -53,6 +53,12 @@ class LoginForm(forms.Form):
         return cleaned_data
 
 
+class ListForm(forms.ModelForm):
+    class Meta:
+        modal = Item
+        fields = "name"
+
+
 class ItemForm(forms.ModelForm):
     class Meta:
         modal = Item

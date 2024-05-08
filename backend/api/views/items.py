@@ -29,12 +29,12 @@ def add_item(request, list_id: int) -> JsonResponse:
     item.todo_list = todo_list
     item.save()
 
-    return JsonResponse(item, status=200)
+    return JsonResponse(item.data(), status=200)
 
 
 @login_required
 @require_http_methods(["PATCH"])
-def tick_item(request, list_id: int, item_id: int) -> None:
+def tick_item(request, list_id: int, item_id: int) -> HttpResponse:
     todo_list = get_object_or_404(TodoList, id=list_id, author=request.user)
     item = get_object_or_404(Item, id=item_id, todo_list=todo_list)
 
@@ -52,7 +52,7 @@ def edit_item(request, list_id: int, item_id: int) -> None:
 
 @login_required
 @require_http_methods(["DELETE"])
-def delete_item(request, list_id: int, item_id: int) -> None:
+def delete_item(request, list_id: int, item_id: int) -> HttpResponse:
     todo_list = get_object_or_404(TodoList, id=list_id, author=request.user)
     item = get_object_or_404(Item, id=item_id, todo_list=todo_list)
 
