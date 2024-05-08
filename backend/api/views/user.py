@@ -1,7 +1,7 @@
 from django.urls import path
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
 
@@ -47,8 +47,9 @@ def change_password(request) -> None:
 
 @login_required
 @require_http_methods(["DELETE"])
-def delete_user(request) -> None:
-    return
+def delete_user(request) -> HttpResponse:
+    request.user.delete()
+    return HttpResponse(status=200)
 
 
 urlpatterns = [
