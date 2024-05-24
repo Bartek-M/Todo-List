@@ -4,10 +4,45 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
+from api.models import File
+from api.utils import crop_image
+
 
 @login_required
-def get_me(request) -> None:
+def get_me(request) -> JsonResponse:
     return JsonResponse(request.user.data(), status=200)
+
+
+@login_required
+def get_avatar(request) -> JsonResponse:
+    file = get_object_or_404(File, id=request.user.avatar)
+
+    resp = HttpResponse(file.file, content_type=".webp")
+    resp["Content-Disposition"] = f"attachment; filename=avatar"
+    return resp
+
+
+@login_required
+@require_http_methods(["POST"])
+def change_avatar(request) -> JsonResponse:
+    if not (file := request.FILES.get("icon")):
+        return HttpResponse(status=400)
+
+    if not (img := crop_image(file)):
+        return JsonResponse({"errors": {"image": ("Invalid image format")}}, status=400)
+
+    try:
+        File.objects.get(id=request.user.avatar).delete()
+    except File.DoesNotExist:
+        pass
+
+    file = File(file=img)
+    file.save()
+
+    request.user.avatar = file.id
+    request.user.save()
+
+    return JsonResponse({"id": file.id}, status=200)
 
 
 @login_required
@@ -25,12 +60,6 @@ def change_theme(request) -> JsonResponse:
     request.user.save()
 
     return JsonResponse({"theme": theme}, status=200)
-
-
-@login_required
-@require_http_methods(["PATCH"])
-def change_avatar(request) -> None:
-    return
 
 
 @login_required
@@ -54,6 +83,8 @@ def delete_user(request) -> HttpResponse:
 
 urlpatterns = [
     path("me/", get_me),
+    path("avatar/", get_avatar),
+    path("set-avatar/", change_avatar),
     path("theme/", change_theme),
     path("password/", change_password),
     path("delete/", delete_user),
