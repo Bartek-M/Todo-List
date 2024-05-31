@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
 from api.models import TodoList, Item
-from api.forms import ItemForm
+from api.forms.lists import ItemForm
 
 
 @login_required

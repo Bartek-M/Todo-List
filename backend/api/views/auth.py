@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import login, logout
 
-from api.forms import LoginForm, RegisterForm
+from api.forms.auth import LoginForm, RegisterForm
 
 
 @require_http_methods(["POST"])

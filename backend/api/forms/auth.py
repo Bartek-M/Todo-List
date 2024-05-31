@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 from django import forms
 
-from api.models import User, Item
+from api.models import User
 
 
 class RegisterForm(forms.ModelForm):
@@ -51,15 +51,3 @@ class LoginForm(forms.Form):
 
         cleaned_data["user"] = user
         return cleaned_data
-
-
-class ListForm(forms.ModelForm):
-    class Meta:
-        modal = Item
-        fields = "name"
-
-
-class ItemForm(forms.ModelForm):
-    class Meta:
-        modal = Item
-        fields = ("text", "notes", "deadline_date")

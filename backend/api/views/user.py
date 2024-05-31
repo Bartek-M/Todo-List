@@ -1,10 +1,14 @@
+import json
+
 from django.urls import path
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
 from api.models import File
+from api.forms.user import UsernameForm, PasswordForm
 from api.utils import crop_image
 
 
@@ -65,13 +69,26 @@ def change_theme(request) -> JsonResponse:
 @login_required
 @require_http_methods(["PATCH"])
 def change_username(request) -> None:
-    return
+    form = UsernameForm(request.user, data=json.loads(request.body))
+
+    if not form.is_valid():
+        return JsonResponse({"errors": json.loads(form.errors.as_json())}, status=400)
+
+    form.save()
+    return HttpResponse(status=200)
 
 
 @login_required
 @require_http_methods(["PATCH"])
 def change_password(request) -> None:
-    return
+    form = PasswordForm(request.user, data=json.loads(request.body))
+
+    if not form.is_valid():
+        return JsonResponse({"errors": json.loads(form.errors.as_json())}, status=400)
+
+    user = form.save()
+    update_session_auth_hash(request, user)
+    return HttpResponse(status=200)
 
 
 @login_required
