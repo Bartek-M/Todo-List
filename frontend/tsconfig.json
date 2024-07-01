@@ -1,12 +1,25 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "composite": true,
+        "target": "ES2020",
         "module": "ESNext",
-        "outDir": "./assets/js",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "removeComments": true,
-        "moduleResolution": "node",
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
-        "jsx": "react-jsx"
-    }
+        "jsx": "react-jsx",
+        "skipLibCheck": true,
+        "moduleResolution": "bundler",
+        "strict": true,
+        "noEmit": true,
+        "useDefineForClassFields": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src/", "vite.config.ts"]
 }

@@ -6,7 +6,7 @@ from api.models import Item
 class ListForm(forms.ModelForm):
     class Meta:
         modal = Item
-        fields = "name"
+        fields = ("name",)
 
 
 class ItemForm(forms.ModelForm):
