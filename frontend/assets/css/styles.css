@@ -1,3 +1,4 @@
-html, body {
-
+html, body, #appMount {
+    height: 100%;
+    width: 100%;
 }
