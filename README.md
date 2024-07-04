@@ -7,7 +7,7 @@ Fullstack **todo list** website written in **Python** and **TypeScript**. Robust
 
 ## Requirements
 - Python 3.8 or above
-- Node.js 16 or above
+- Node.js 20 or above
 
 ## Setup 
 Simply run setup.py to install and setup everything
