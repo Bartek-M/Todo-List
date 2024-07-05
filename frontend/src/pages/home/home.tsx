@@ -1,3 +1,5 @@
+import "/assets/css/home.css"
+
 export function Home() {
     return (
         <>
