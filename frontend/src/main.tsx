@@ -1,8 +1,9 @@
 import { lazy } from "react"
 import { createRoot } from "react-dom/client"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 const Home = lazy(() => import("./pages/home").then(module => { return { default: module.Home } }))
+const Settings = lazy(() => import("./pages/settings").then(module => { return { default: module.Settings } }))
 const Login = lazy(() => import("./pages/auth").then(module => { return { default: module.Login } }))
 const Register = lazy(() => import("./pages/auth").then(module => { return { default: module.Register } }))
 
@@ -12,7 +13,8 @@ root.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/settings" element={<Settings />} />
 
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

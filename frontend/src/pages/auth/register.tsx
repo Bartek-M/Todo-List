@@ -21,7 +21,7 @@ export function Register() {
                 </form>
             </div>
             <footer className="mt-auto">
-                <p className="text-center text-body-secondary m-2">© 2024 Todo List</p>
+                <p className="text-center text-body-secondary m-2">© { new Date().getUTCFullYear() } Todo List</p>
             </footer>
         </div>
     )

@@ -1,23 +1,45 @@
+import { useRef } from "react"
+
+async function submitLogin(email: HTMLInputElement | null, passw: HTMLInputElement | null) {
+    if (!email || !passw) return
+
+    let valEmail = email.value
+    let valPassw = passw.value
+
+    await fetch("/api/auth/login/", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+            email: valEmail,
+            passw: valPassw
+        })
+    }).then((resp) => console.log(resp)).catch()
+}
+
 export function Login() {
+    const email = useRef(null)
+    const passw = useRef(null)
+    const submitBtn = useRef(null)
+
     return (
         <div className="d-flex flex-column align-items-center h-100 p-2">
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
-                <form className="card-body">
+                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(email.current, passw.current) }}>
                     <h2 className="text-center mb-3">Login</h2>
                     <div className="mb-3">
                         <label className="form-label">Email</label>
-                        <input type="email" className="form-control" required />
+                        <input ref={email} type="email" className="form-control" required />
                     </div>
                     <div className="mb-4">
                         <label className="form-label">Password</label>
-                        <input type="password" className="form-control" required />
+                        <input ref={passw} type="password" className="form-control" required />
                         <div className="form-text">Don't have an account. Create one <a href="/register">here</a>.</div>
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Submit</button>
+                    <button ref={submitBtn} type="submit" className="btn btn-primary w-100">Submit</button>
                 </form>
             </div>
             <footer className="mt-auto">
-                <p className="text-center text-body-secondary m-2">© 2024 Todo List</p>
+                <p className="text-center text-body-secondary m-2">© { new Date().getUTCFullYear() } Todo List</p>
             </footer>
         </div>
     )
