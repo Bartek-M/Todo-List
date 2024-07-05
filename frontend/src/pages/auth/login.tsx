@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { NavBase } from "/src/components/"
 
 async function submitLogin(email: HTMLInputElement | null, passw: HTMLInputElement | null) {
     if (!email || !passw) return
@@ -22,7 +23,7 @@ export function Login() {
     const submitBtn = useRef(null)
 
     return (
-        <div className="d-flex flex-column align-items-center h-100 p-2">
+        <NavBase>
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
                 <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(email.current, passw.current) }}>
                     <h2 className="text-center mb-3">Login</h2>
@@ -38,9 +39,6 @@ export function Login() {
                     <button ref={submitBtn} type="submit" className="btn btn-primary w-100">Submit</button>
                 </form>
             </div>
-            <footer className="mt-auto">
-                <p className="text-center text-body-secondary m-2">© { new Date().getUTCFullYear() } Todo List</p>
-            </footer>
-        </div>
+        </NavBase>
     )
 }

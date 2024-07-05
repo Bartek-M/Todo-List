@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
-export function ProtectedRoute({ child }: any) {
-    const isAuth, setAuth = useState(null)
+import { boolState } from "/src/types";
 
-    return isAuth ? child : <h1>Loading...</h1>;
+export function ProtectedRoute({ children, redirect }: { children: any, redirect: string }) {
+    const [isAuthorized, setIsAuthorized] = useState<boolState>(null)
+
+    useEffect(() => {
+        setIsAuthorized(false)
+    })
+
+    if (isAuthorized === null) {
+        return <h1>Loading...</h1>
+    }
+
+    return isAuthorized ? children : <Navigate to={redirect} />
 }

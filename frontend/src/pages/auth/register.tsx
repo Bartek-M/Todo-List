@@ -1,6 +1,8 @@
+import { NavBase } from "/src/components/"
+
 export function Register() {
     return (
-        <div className="d-flex flex-column align-items-center h-100 p-2">
+        <NavBase>
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
                 <form className="card-body">
                     <h2 className="text-center mb-3">Create an account</h2>
@@ -20,9 +22,6 @@ export function Register() {
                     <button type="submit" className="btn btn-primary w-100">Submit</button>
                 </form>
             </div>
-            <footer className="mt-auto">
-                <p className="text-center text-body-secondary m-2">© { new Date().getUTCFullYear() } Todo List</p>
-            </footer>
-        </div>
+        </NavBase>
     )
 }

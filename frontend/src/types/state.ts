@@ -1,0 +1,1 @@
+export type boolState = boolean | null
