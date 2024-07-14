@@ -1,6 +1,6 @@
 import { lazy } from "react"
 import { createRoot } from "react-dom/client"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ProtectedRoute } from "./components"
 
 const Home = lazy(() => import("./pages/home").then(module => { return { default: module.Home } }))
@@ -24,7 +24,11 @@ root.render(
                     <Settings />
                 </ProtectedRoute>
             } />
-            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/home" element={
+                <ProtectedRoute redirect="/login">
+                    <Settings />
+                </ProtectedRoute>
+            } />
             <Route path="/welcome" element={<Welcome />} />
 
             <Route path="/register" element={<Register />} />

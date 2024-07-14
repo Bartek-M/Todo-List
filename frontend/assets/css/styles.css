@@ -3,10 +3,25 @@ html, body, #appMount {
     width: 100%;
 }
 
+* {
+    user-select: none;
+}
+
 a {
     text-decoration: none!important;
 }
 
 a:hover:not(.hidden-link) {
     opacity: 0.75;
+}
+
+.navbar-toggler {
+    box-shadow: none!important;
+}
+
+@media (max-width: 576px) {
+    .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+    }
 }
