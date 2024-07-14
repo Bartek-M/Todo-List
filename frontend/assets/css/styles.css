@@ -4,9 +4,9 @@ html, body, #appMount {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
-a:hover {
-    text-decoration: underline;
+a:hover:not(.hidden-link) {
+    opacity: 0.75;
 }

@@ -4,7 +4,7 @@ import "/assets/css/welcome.css"
 export function Welcome() {
     return (
         <NavBase>
-            <h1>Welcome Page</h1>
+            <h3>Welcome Page</h3>
         </NavBase>
     )
 }
