@@ -1,4 +1,8 @@
+import { useLocation } from "react-router-dom"
+
 export function NavBase({ children }: any) {
+    const location = useLocation().pathname
+
     return (
         <div className="d-flex flex-column align-items-center h-100 p-2">
             <nav className="navbar navbar-expand-sm w-100">
@@ -16,12 +20,12 @@ export function NavBase({ children }: any) {
                         </div>
                         <div className="offcanvas-body justify-content-between">
                             <div className="navbar-nav">
-                                <a className="nav-link" href="/home">Home</a>
+                                <a className={`nav-link ${location.includes('welcome') ? 'active' : ''}`} href="/">Home</a>
                                 <a className="nav-link" href="https://github.com/Bartek-M/Todo-List" target="_blank">About</a>
                             </div>
                             <div className="navbar-nav align-items-center gap-2">
-                                <a className="nav-link text-center w-100" href="/login">Login</a>
-                                <a className="nav-link btn border border-dark-subtle py-1 w-100" href="/register">Register</a>
+                                <a className={`nav-link text-center w-100 ${location.includes('login') ? 'active' : ''}`} href="/login">Login</a>
+                                <a className={`nav-link btn border border-dark-subtle py-1 w-100 ${location.includes('register') ? 'active' : ''}`} href="/register">Register</a>
                             </div>
                         </div>
                     </div>
