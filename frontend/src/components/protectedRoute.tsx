@@ -7,7 +7,7 @@ export function ProtectedRoute({ children, redirect }: { children: any, redirect
     const [isAuthorized, setIsAuthorized] = useState<boolState>(null)
 
     useEffect(() => {
-        setIsAuthorized(false)
+        setIsAuthorized(true)
     })
 
     if (isAuthorized === null) {

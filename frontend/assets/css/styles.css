@@ -3,6 +3,14 @@ html, body, #appMount {
     width: 100%;
 }
 
+#appMount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    min-width: 220px;
+}
+
 * {
     user-select: none;
 }
@@ -24,4 +32,11 @@ a:hover:not(.hidden-link) {
         display: flex;
         flex-direction: column;
     }
+}
+
+.avatar-small {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
 }

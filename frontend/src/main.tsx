@@ -1,6 +1,6 @@
 import { lazy } from "react"
 import { createRoot } from "react-dom/client"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { ProtectedRoute } from "./components"
 
 const Home = lazy(() => import("./pages/home").then(module => { return { default: module.Home } }))
@@ -19,12 +19,12 @@ root.render(
                     <Home />
                 </ProtectedRoute>
             } />
-            <Route path="/settings" element={
+            <Route path="/home" element={
                 <ProtectedRoute redirect="/login">
-                    <Settings />
+                    <Home />
                 </ProtectedRoute>
             } />
-            <Route path="/home" element={
+            <Route path="/settings" element={
                 <ProtectedRoute redirect="/login">
                     <Settings />
                 </ProtectedRoute>
@@ -33,6 +33,7 @@ root.render(
 
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Navigate to="/login" />} />
 
             <Route path="*" element={<h1>404 Not found :(</h1>} />
         </Routes>
