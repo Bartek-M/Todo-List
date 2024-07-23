@@ -23,7 +23,7 @@ a:hover:not(.hidden-link) {
     opacity: 0.75;
 }
 
-.navbar-toggler {
+button {
     box-shadow: none!important;
 }
 

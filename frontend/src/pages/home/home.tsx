@@ -1,6 +1,13 @@
+import { useState } from "react"
+
+import { ListModal } from "."
+import { Modal } from "/src/components"
+
 import "/assets/css/home.css"
 
 export function Home() {
+    const [listModal, setListModal] = useState(false)
+
     return (
         <>
             <nav className="navbar p-0 w-100">
@@ -17,6 +24,15 @@ export function Home() {
                     </div>
                 </div>
             </nav>
+            <button className="btn rounded-circle p-0 m-4 position-absolute bottom-0 end-0" onClick={() => setListModal(true)}>
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                </svg>
+            </button>
+            <Modal setHidden={() => setListModal(false)}>
+                {listModal && <ListModal />}
+            </Modal>
         </>
     )
 }
