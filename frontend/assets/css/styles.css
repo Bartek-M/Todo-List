@@ -6,6 +6,7 @@ html, body, #appMount {
 #appMount {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     padding: 0.25rem 0.5rem;
     min-width: 220px;

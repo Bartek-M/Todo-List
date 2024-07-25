@@ -18,7 +18,7 @@ export function Modal({ children, setHidden }: { children: any, setHidden: any }
     }, [modal])
 
     return (
-        <div className="modal fade" id="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="modal" aria-hidden="true">
             {children}
         </div>
     )
