@@ -8,8 +8,9 @@ html, body, #appMount {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.5rem 0;
     min-width: 220px;
+    min-height: 160px;
 }
 
 * {

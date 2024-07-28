@@ -1,0 +1,11 @@
+@media (max-width: 220px) {
+    #btn-add {
+        left: 162px
+    }
+}
+
+@media (max-height: 160px) {
+    #btn-add {
+        top: 112px
+    }
+}
