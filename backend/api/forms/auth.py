@@ -23,6 +23,13 @@ class RegisterForm(forms.ModelForm):
             self.add_error("password", e)
 
         return cleaned_data
+    
+    def save(self):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        user.save()
+
+        return user
 
 
 class LoginForm(forms.Form):
@@ -35,9 +42,11 @@ class LoginForm(forms.Form):
         login_data = cleaned_data.get("login_data")
         password = cleaned_data.get("password")
 
+        user = None
+
         try:
             email_user = User.objects.get(email=login_data)
-
+            
             if email_user and email_user.check_password(password):
                 user = email_user
         except User.DoesNotExist:
