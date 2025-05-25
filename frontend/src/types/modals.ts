@@ -1,0 +1,1 @@
+export type homeModals = "newList" | "settings" | null

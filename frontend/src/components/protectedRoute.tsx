@@ -11,7 +11,9 @@ export function ProtectedRoute({ children, redirect }: { children: any, redirect
     })
 
     if (isAuthorized === null) {
-        return <h1>Loading...</h1>
+        return <div className="spinner-border my-auto" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
     }
 
     return isAuthorized ? children : <Navigate to={redirect} />

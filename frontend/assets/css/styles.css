@@ -1,6 +1,14 @@
+:root {
+    --bs-tertiary-bg-rgb: 245, 246, 248;
+    --bs-secondary-color: rgba(0, 0, 0, 1);
+
+    --btn-bg-active: #dfe2e7;
+}
+
 html, body, #appMount {
     height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 #appMount {
@@ -9,8 +17,6 @@ html, body, #appMount {
     justify-content: space-between;
     align-items: center;
     padding: 0.25rem 0.5rem 0;
-    min-width: 220px;
-    min-height: 160px;
 }
 
 * {
@@ -21,12 +27,26 @@ a {
     text-decoration: none!important;
 }
 
-a:hover:not(.hidden-link) {
+a:hover:not(.hidden-link), button:hover {
     opacity: 0.75;
 }
 
 button {
     box-shadow: none!important;
+}
+
+.btn:has(i) {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+}
+
+.list-group button {
+    padding: 0 0.5rem!important;
+}
+
+.list-group-item-action:active, .list-group-item-action:hover {
+    background-color: var(--btn-bg-active)!important;
 }
 
 @media (max-width: 576px) {

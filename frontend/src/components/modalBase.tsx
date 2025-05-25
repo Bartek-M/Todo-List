@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export function Modal({ children, setHidden }: { children: any, setHidden: any }) {
+export function ModalBase({ children, setHidden }: { children: any, setHidden: any }) {
     const [modal, setModal] = useState<any>(null)
 
     useEffect(() => {
