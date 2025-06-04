@@ -26,3 +26,5 @@ python manage.py runserver
 NOT FOR COMMERCIAL USE 
 
 > If you intend to use any of my code for commercial use please contact me and get my permission.
+
+<!-- GitAds-Verify: 8PWH2V6ZGMERK6RNQZTQA4RM4AJ3FBCD -->
