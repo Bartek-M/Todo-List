@@ -11,3 +11,22 @@
     padding: 0.25rem 2rem;
     height: 45px;
 }
+
+@media screen and (max-width: 550px) {
+    #appMount {
+        grid-template-columns: 1fr;
+    }
+
+    #sidebar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        transition: transform 0.15s ease-in-out;
+        transform: translateX(0)
+    }
+
+    #sidebar.hidden {
+        transform: translateX(-100%);
+    }
+}

@@ -35,14 +35,14 @@ button {
     box-shadow: none!important;
 }
 
-.btn:has(i) {
+.btn:has(svg) {
     display: inline-flex;
     align-items: center;
     padding: 0;
 }
 
 .list-group button {
-    padding: 0 0.5rem!important;
+    padding: 0.25rem 0.5rem!important;
 }
 
 .list-group-item-action:active, .list-group-item-action:hover {

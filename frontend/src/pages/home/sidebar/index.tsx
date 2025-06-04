@@ -3,7 +3,7 @@ import { Options } from "./options"
 
 export function Sidebar({ setModal }: any) {
     return (
-        <div className="d-flex flex-column bg-body-tertiary h-100">
+        <div className="d-flex flex-column bg-body-tertiary h-100" id="sidebar">
             <Lists />
             <Options setModal={setModal} />
         </div>
