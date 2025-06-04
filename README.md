@@ -5,6 +5,10 @@ Fullstack **todo list** website written in **Python** and **TypeScript**. Robust
 > 
 > If you find any bugs, feel free to create a new **issue** in this repository.
 
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=bartek-m/todo-list@github)](https://gitads.dev/v1/ad-track?source=bartek-m/todo-list@github)
+
+
 ## Requirements
 - Python 3.8 or above
 - Node.js 20 or above
