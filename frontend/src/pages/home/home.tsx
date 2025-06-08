@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState} from "react"
+import { useDynamicStyles } from "/src/utils/"
+import { UserProvider } from "/src/context"
 
 import { Main } from "./main"
 import { Sidebar } from "./sidebar"
@@ -8,13 +10,13 @@ import { ListModal } from "./modals"
 import { ModalBase } from "/src/components"
 import { homeModals } from "/src/types"
 
-import "/assets/css/home.css"
 
-export function Home() {
+export function Home({ redirect }: { redirect: string }) {
     const [modal, setModal] = useState<homeModals>(null)
+    useDynamicStyles("/assets/css/home.css")
 
     return (
-        <>
+        <UserProvider redirect={redirect}>
             <Sidebar setModal={setModal} />
             <Main />
 
@@ -24,6 +26,6 @@ export function Home() {
                     modal === "newList" && <ListModal />
                 }
             </ModalBase>
-        </>
+        </UserProvider>
     )
 }

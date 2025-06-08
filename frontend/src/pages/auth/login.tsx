@@ -1,9 +1,12 @@
 import { useRef } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+
 import { NavBase } from "/src/components/"
 import { apiFetch } from "/src/utils/"
+import { refInput } from "/src/types"
 
 
-async function submitLogin(login: HTMLInputElement | null, passw: HTMLInputElement | null) {
+async function submitLogin(login: refInput, passw: refInput, navigator: any) {
     if (!login || !passw) return
     
     let valLogin = login.value
@@ -22,6 +25,7 @@ async function submitLogin(login: HTMLInputElement | null, passw: HTMLInputEleme
         }
 
         if (resp.ok) {
+            navigator("/")
             console.log("logged in")
         }
     })
@@ -32,10 +36,14 @@ export function Login() {
     const passw = useRef(null)
     const submitBtn = useRef(null)
 
+    const navigator = useNavigate()
+    const location = useLocation()
+    console.log(location.state?.logout)
+
     return (
         <NavBase>
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
-                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(login.current, passw.current) }}>
+                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(login.current, passw.current, navigator) }}>
                     <h2 className="text-center mb-3">Login to Todo-List</h2>
                     <div className="mb-3">
                         <label className="form-label">Email / Username</label>

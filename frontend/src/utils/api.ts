@@ -18,7 +18,7 @@ async function getCsrfToken(): Promise<string | null> {
         })
 }
 
-export async function apiFetch(url: string, method: string, data: object = {}): Promise<[Response, any] | null> {
+export async function apiFetch(url: string, method: string, data: object | null = null): Promise<[Response, any] | null> {
     const csrfToken = await getCsrfToken()
     if (!csrfToken) return null
 
