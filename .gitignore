@@ -1,4 +1,5 @@
 .vscode/
+.vs/
 __pycache__/
 node_modules/
 migrations/

@@ -8,8 +8,8 @@ backend/
 docs/               
 frontend/          
     assets/     Static files (Bundled JS, CSS, Icons, Images)
+    dist/       Website build
     src/        Frontend logic
-    templates/  HTML template
 scripts/            
 ```
 
@@ -24,7 +24,9 @@ npm install
 TS package
 ```bash
 npm run dev
+
 npm run build
+npm run preview
 ```
 
 Database setup
