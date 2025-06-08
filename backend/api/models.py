@@ -14,24 +14,22 @@ class User(AbstractUser):
         ],
         default=0,
     )
-    lists = models.ManyToManyField("TodoList")
 
     def data(self) -> dict:
         return {
             "username": self.username,
             "email": self.email,
             "avatar": self.avatar,
-            "lists": [lst.data() for lst in self.lists.all()],
+            "lists": [lst.data() for lst in self.todolist_set.all()],
         }
 
     def __repr__(self) -> str:
-        return f"[{self.username}] {self.email} - {len(self.lists.all())} lists"
+        return f"[{self.username}] {self.email} - {len(self.todolist_set.all())} lists"
 
 
 class TodoList(models.Model):
     name = models.CharField(max_length=50)
     author = models.ForeignKey("User", on_delete=models.CASCADE)
-    items = models.ManyToManyField("Item")
     create_date = models.DateTimeField(default=timezone.now)
 
     def data(self) -> dict:
@@ -41,10 +39,10 @@ class TodoList(models.Model):
         }
 
     def get_items(self) -> list:
-        return [item.data() for item in self.items.all()]
+        return [item.data() for item in self.item_set.all()]
 
     def __repr__(self) -> str:
-        return f"[{self.name}] by {self.author} - {len(self.items.all())} items"
+        return f"[{self.name}] by {self.author} - {len(self.item_set.all())} items"
 
 
 class Item(models.Model):

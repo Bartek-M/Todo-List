@@ -23,7 +23,6 @@ def auth_login(request):
     return HttpResponse(status=200)
 
 
-@login_required 
 def auth_logout(request):
     logout(request)
     return HttpResponse(status=200)
@@ -36,9 +35,7 @@ def auth_register(request):
     if not form.is_valid():
         return JsonResponse({"errors": json.loads(form.errors.as_json())}, status=400)
 
-    user = form.save()
-    login(request, user)
-
+    form.save()
     return HttpResponse(status=200)
 
 
