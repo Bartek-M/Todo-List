@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom"
 import { ActiveProvider } from "./"
 
 import { userContext, userState } from "/src/types"
-import { apiFetch } from "/src/utils"
+import { apiFetch, defaultLists, mergeLists } from "/src/utils"
 import { Loading } from "/src/components"
 
 
@@ -21,6 +21,7 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
             let [resp, data] = result
 
             if (resp.ok) {
+                data.lists = mergeLists(defaultLists, data.lists)
                 return setUser(data)
             } 
 

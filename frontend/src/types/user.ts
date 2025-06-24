@@ -10,7 +10,12 @@ export type todoListType = {
     id: string;
     name: string;
     created_at: string;
+    default: boolean;
     items: itemType[] | null;
+
+    extraClass?: string
+    svgPath?: string[];
+    fill?: string;
 }
 
 export type itemType = {

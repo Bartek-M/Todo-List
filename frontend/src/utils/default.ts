@@ -8,6 +8,7 @@ export const defaultLists = [
         extraClass: "mb-3"
     },
     {
+        id: "today",
         name: "Today",
         fill: "#fdd314",
         svgPath: [
@@ -15,6 +16,7 @@ export const defaultLists = [
         ]
     },
     {
+        id: "upcoming",
         name: "Upcoming",
         fill: "#f94876",
         svgPath: [
@@ -23,6 +25,7 @@ export const defaultLists = [
         ]
     },
     {
+        id: "anytime",
         name: "Anytime",
         fill: "#3aa08b",
         svgPath: [
@@ -31,6 +34,7 @@ export const defaultLists = [
         ]
     },
     {
+        id: "someday",
         name: "Someday",
         fill: "#c9c090",
         svgPath: [
@@ -39,15 +43,17 @@ export const defaultLists = [
         extraClass: "mb-3"
     },
     {
+        id: "logbook",
         name: "Logbook",
         fill: "#47b378",
         svgPath: [
             "M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0",
             "M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2",
             "M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"
-        ],
+        ]
     },
     {
+        id: "trash",
         name: "Trash",
         fill: "#c1c5c9",
         svgPath: [
@@ -57,4 +63,7 @@ export const defaultLists = [
     },
 ]
 
-export const defaultIcon = ["M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"] 
+export const defaultIcon = {
+    fill: "#abaeb1",
+    svgPath: ["M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"],
+}
