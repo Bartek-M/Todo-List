@@ -17,13 +17,14 @@ class User(AbstractUser):
 
     def data(self) -> dict:
         return {
+            "id": str(self.id),
             "username": self.username,
             "email": self.email,
             "avatar": self.avatar,
             "lists": [lst.data() for lst in self.todolist_set.all()],
         }
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         return f"[{self.username}] {self.email} - {len(self.todolist_set.all())} lists"
 
 
@@ -31,17 +32,21 @@ class TodoList(models.Model):
     name = models.CharField(max_length=50)
     author = models.ForeignKey("User", on_delete=models.CASCADE)
     create_date = models.DateTimeField(default=timezone.now)
+    default = models.BooleanField(default=False)
 
     def data(self) -> dict:
         return {
+            "id": str(self.id),
             "name": self.name,
             "create_date": self.create_date,
+            "default": self.default,
+            "items": None
         }
 
     def get_items(self) -> list:
         return [item.data() for item in self.item_set.all()]
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         return f"[{self.name}] by {self.author} - {len(self.item_set.all())} items"
 
 
@@ -52,14 +57,17 @@ class Item(models.Model):
     ticked = models.BooleanField(default=False)
     deadline_date = models.DateTimeField(blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
+    deleted = models.BooleanField(default=False)
 
     def data(self) -> dict:
         return {
+            "id": str(self.id),
             "text": self.text,
             "notes": self.notes,
             "ticked": self.ticked,
             "deadline_date": self.deadline_date,
             "create_date": self.create_date,
+            "deleted": self.deleted
         }
 
     def __repr__(self) -> str:

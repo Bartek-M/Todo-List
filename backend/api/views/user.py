@@ -2,13 +2,13 @@ import json
 
 from django.urls import path
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
 from api.models import File
 from api.forms.user import UsernameForm, PasswordForm
+from api.decorators import login_required
 from api.utils import crop_image
 
 

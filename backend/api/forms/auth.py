@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
 from django import forms
 
-from api.models import User
+from api.models import User, TodoList
 
 
 class RegisterForm(forms.ModelForm):
@@ -28,6 +28,8 @@ class RegisterForm(forms.ModelForm):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
         user.save()
+
+        TodoList(name="Inbox", author=user, default=True).save()
 
         return user
 

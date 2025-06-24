@@ -1,11 +1,11 @@
 from django import forms
 
-from api.models import Item
+from api.models import TodoList, Item
 
 
 class ListForm(forms.ModelForm):
     class Meta:
-        modal = Item
+        modal = TodoList
         fields = ("name",)
 
 

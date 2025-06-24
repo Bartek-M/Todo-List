@@ -2,12 +2,12 @@ import json
 
 from django.urls import path
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404
 
 from api.models import TodoList, Item
 from api.forms.lists import ListForm
+from api.decorators import login_required
 
 
 @login_required
