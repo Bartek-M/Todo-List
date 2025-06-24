@@ -1,16 +1,17 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Navigate } from "react-router-dom"
+import { ActiveProvider } from "./"
 
-import { contextState } from "/src/types"
+import { userContext, userState } from "/src/types"
 import { apiFetch } from "/src/utils"
 import { Loading } from "/src/components"
 
 
-const UserContext = React.createContext<contextState>(null)
+const UserContext = React.createContext<userContext>(null)
 export function useUser() { return useContext(UserContext) }
 
 export function UserProvider({ children, redirect }: { children: React.ReactNode, redirect: string }) {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState<userState>(null)
 
     useEffect(() => {
         if (user) return
@@ -19,17 +20,14 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
             if (!result) return
             let [resp, data] = result
 
-            console.log(resp)
-
             if (resp.ok) {
-                setUser(data)
+                return setUser(data)
             } 
 
-            if (!Object.keys(data).length) { setUser(false) }
+            setUser(false)
         })
     }, [])
 
-    console.log(user)
 
     if (user === null) {
         return (<Loading />)
@@ -37,7 +35,9 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
 
     return user ? (
         <UserContext.Provider value={[user, setUser]}>
-            {children}
+            <ActiveProvider>
+                {children}
+            </ActiveProvider>
         </UserContext.Provider>
     ) : <Navigate to={redirect} />
 }

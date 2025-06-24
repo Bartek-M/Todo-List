@@ -25,7 +25,7 @@ async function submitLogin(login: refInput, passw: refInput, navigator: any) {
         }
 
         if (resp.ok) {
-            navigator("/")
+            navigator("/home")
             console.log("logged in")
         }
     })

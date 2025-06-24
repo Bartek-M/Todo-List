@@ -3,6 +3,8 @@
     --bs-secondary-color: rgba(0, 0, 0, 1);
 
     --btn-bg-active: #dfe2e7;
+    --bs-link-color: #000;
+    --bs-link-hover-color: #777;
 }
 
 html, body, #appMount {
@@ -39,6 +41,10 @@ button {
     display: inline-flex;
     align-items: center;
     padding: 0;
+}
+
+.nav-link:focus:not(:hover) {
+    border-bottom-color: transparent!important;
 }
 
 .list-group button {

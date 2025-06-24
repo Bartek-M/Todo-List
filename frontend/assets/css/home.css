@@ -50,8 +50,12 @@
     #main-close {
         display: block;
     }
+
+    .list-group-item-action.active:not(:hover) {
+        background-color: var(--bs-btn-bg)!important;
+    }
 }
 
 @media screen and (max-width: 400px) { 
-
+    /* dynamic list options */
 }

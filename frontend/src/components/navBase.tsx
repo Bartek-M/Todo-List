@@ -21,11 +21,12 @@ export function NavBase({ children }: any) {
                         <div className="offcanvas-body justify-content-between">
                             <div className="navbar-nav">
                                 <a className={`nav-link ${location.includes('welcome') ? 'active' : ''}`} href="/welcome">Home</a>
+                                <a className={`nav-link ${location.includes('pricing') ? 'active' : ''}`} href="/pricing">Pricing</a>
                                 <a className="nav-link" href="https://github.com/Bartek-M/Todo-List" target="_blank">About</a>
                             </div>
                             <div className="navbar-nav align-items-center gap-2">
-                                <a className="nav-link text-center w-100" href="/login">Login</a>
-                                <a className="btn btn-outline-success py-1 w-100" href="/register">Register</a>
+                                <a className={`nav-link text-center w-100 ${location.includes('login') ? 'active' : ''}`} href="/login">Login</a>
+                                <a className={`btn btn-outline-success py-1 w-100 ${location.includes('register') ? 'active' : ''}`} href="/register">Register</a>
                             </div>
                         </div>
                     </div>

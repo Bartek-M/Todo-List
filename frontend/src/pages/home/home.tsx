@@ -1,4 +1,4 @@
-import { useState} from "react"
+import { useState } from "react"
 import { useDynamicStyles } from "/src/utils/"
 import { UserProvider } from "/src/context"
 
@@ -13,7 +13,7 @@ import { homeModals } from "/src/types"
 
 export function Home({ redirect }: { redirect: string }) {
     const [modal, setModal] = useState<homeModals>(null)
-    useDynamicStyles("/assets/css/home.css")
+    useDynamicStyles("/css/home.css")
 
     return (
         <UserProvider redirect={redirect}>
