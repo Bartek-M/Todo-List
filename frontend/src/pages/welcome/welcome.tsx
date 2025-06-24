@@ -6,7 +6,7 @@ export function Welcome() {
 
     return (
         <NavBase>
-            <h3>Welcome Page</h3>
+            <h1 className="p-3">Welcome Page</h1>
         </NavBase>
     )
 }

@@ -1,3 +1,6 @@
+import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs"
+
+
 export function Settings() {
     return (
         <div className="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
@@ -11,11 +14,11 @@ export function Settings() {
                     </nav>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div className="modal-body tab-content">
-                    <div className="tab-pane fade show active" id="setting-account-tab">Account settings?</div>
-                    <div className="tab-pane fade"  id="setting-general-tab">General settings?</div>
-                    <div className="tab-pane fade" id="setting-theme-tab">Theme settings?</div>
-                    <div className="tab-pane fade" id="setting-about-tab">About settings?</div>
+                <div className="modal-body tab-content text-body-secondary" style={{padding: "1rem 2rem"}}>
+                    <div className="tab-pane show active" id="setting-account-tab"><AccountTab /></div>
+                    <div className="tab-pane" id="setting-general-tab"><GeneralTab /></div>
+                    <div className="tab-pane" id="setting-theme-tab"><ThemeTab /></div>
+                    <div className="tab-pane" id="setting-about-tab"><AboutTab /></div>
                 </div>
             </div>
         </div>
