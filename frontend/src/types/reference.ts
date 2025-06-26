@@ -1,1 +1,1 @@
-export type refInput = HTMLInputElement | null
+export type refInput = HTMLInputElement | null;

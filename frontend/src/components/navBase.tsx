@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
 export function NavBase({ children }: any) {
-    const location = useLocation().pathname
+    const location = useLocation().pathname;
 
     return (
         <>
@@ -37,5 +37,5 @@ export function NavBase({ children }: any) {
                 <p className="text-center text-body-secondary m-2">© {new Date().getUTCFullYear()} Todo List</p>
             </footer>
         </>
-    )
+    );
 }

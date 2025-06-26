@@ -1,49 +1,49 @@
-import { useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { NavBase } from "/src/components/"
-import { apiFetch } from "/src/utils"
-import { refInput } from "/src/types"
+import { NavBase } from "/src/components/";
+import { apiFetch } from "/src/utils";
+import { refInput } from "/src/types";
 
 async function submitRegister(username: refInput, email: refInput, passw: refInput, navigator: any) {
-    if (!username || !email || !passw) return
+    if (!username || !email || !passw) return;
 
-    let valUsername = username.value
-    let valEmail = email.value
-    let valPassw = passw.value
-    if (!valUsername || !valEmail || !valPassw) return
+    let valUsername = username.value;
+    let valEmail = email.value;
+    let valPassw = passw.value;
+    if (!valUsername || !valEmail || !valPassw) return;
 
     apiFetch("auth/register/", "POST", {
         username: valUsername,
         email: valEmail,
         password: valPassw
     }).then((result) => {
-        if (!result) return
-        let [resp, data] = result
+        if (!result) return;
+        let [resp, data] = result;
 
         if (data.errors) {
-            return
+            return;
         }
 
         if (resp.ok) {
-            navigator("/login")
-            console.log("registered")
+            navigator("/login");
+            console.log("registered");
         }
-    })
+    });
 }
 
 export function Register() {
-    const username = useRef(null)
-    const email = useRef(null)
-    const passw = useRef(null)
-    const submitBtn = useRef(null)
+    const username = useRef(null);
+    const email = useRef(null);
+    const passw = useRef(null);
+    const submitBtn = useRef(null);
 
-    const navigator = useNavigate()
+    const navigator = useNavigate();
 
     return (
         <NavBase>
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
-                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitRegister(username.current, email.current, passw.current, navigator) }}>
+                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitRegister(username.current, email.current, passw.current, navigator); }}>
                     <h2 className="text-center mb-3">Register to Todo-List</h2>
                     <div className="mb-3">
                         <label className="form-label">Username</label>
@@ -62,5 +62,5 @@ export function Register() {
                 </form>
             </div>
         </NavBase>
-    )
+    );
 }

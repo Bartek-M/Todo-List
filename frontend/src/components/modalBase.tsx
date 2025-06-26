@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-export function ModalBase({ children, setHidden }: { children: any, setHidden: any }) {
-    const [modal, setModal] = useState<any>(null)
+export function ModalBase({ children, setHidden }: { children: any, setHidden: any; }) {
+    const [modal, setModal] = useState<any>(null);
 
     useEffect(() => {
         if (!children) {
-            if (modal) modal.hide()
-            return setModal(null)
+            if (modal) modal.hide();
+            return setModal(null);
         }
 
-        setModal(new bootstrap.Modal("#modal"))
-    }, [children])
+        setModal(new bootstrap.Modal("#modal"));
+    }, [children]);
 
     useEffect(() => {
-        if (!modal) return
-        if (!children) return
+        if (!modal) return;
+        if (!children) return;
 
-        modal.show()
-        document.getElementById("modal")?.addEventListener("hidden.bs.modal", setHidden)
-        return () => document.removeEventListener("hidden.bs.modal", setHidden)
-    }, [modal])
+        modal.show();
+        document.getElementById("modal")?.addEventListener("hidden.bs.modal", setHidden);
+        return () => document.removeEventListener("hidden.bs.modal", setHidden);
+    }, [modal]);
 
     return (
         <div className="modal fade" id="modal">
             {children}
         </div>
-    )
+    );
 }

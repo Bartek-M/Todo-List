@@ -17,9 +17,9 @@ export function Lists() {
             return {
                 ...user,
                 lists: newLists
-            }
-        })
-    }
+            };
+        });
+    };
 
     return (
         <div className="list-group py-4 px-4">

@@ -3,7 +3,7 @@ export type svgProps = {
     fill?: string;
     fillRule?: "nonzero" | "evenodd";
     width?: string;
-    height?: string
+    height?: string;
 }
 
 export type dragItemProps = {
@@ -16,8 +16,8 @@ export type dragItemProps = {
 }
 
 export type dragListProps = {
-    Element: any,
-    title: string,  
-    list: any[], 
-    dragEnd: (dragged: number, over: number) => void
+    Element: any;
+    title: string;
+    list: any[];
+    dragEnd: (dragged: number, over: number) => void;
 }

@@ -1,4 +1,4 @@
-import { NavBase } from "/src/components"
+import { NavBase } from "/src/components";
 
 
 export function Pricing() {
@@ -173,5 +173,5 @@ export function Pricing() {
                 </div>
             </div>
         </NavBase>
-    )
+    );
 }

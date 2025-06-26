@@ -14,7 +14,7 @@ export type todoListType = {
     created_at: string;
     items: itemType[] | undefined;
 
-    extraClass?: string
+    extraClass?: string;
     svgPath?: string[];
     fill?: string;
 }

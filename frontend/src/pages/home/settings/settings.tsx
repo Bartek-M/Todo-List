@@ -1,4 +1,4 @@
-import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs"
+import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs";
 
 
 export function Settings() {
@@ -14,7 +14,7 @@ export function Settings() {
                     </nav>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div className="modal-body tab-content text-body-secondary" style={{padding: "1rem 2rem"}}>
+                <div className="modal-body tab-content text-body-secondary" style={{ padding: "1rem 2rem" }}>
                     <div className="tab-pane show active" id="setting-account-tab"><AccountTab /></div>
                     <div className="tab-pane" id="setting-general-tab"><GeneralTab /></div>
                     <div className="tab-pane" id="setting-theme-tab"><ThemeTab /></div>
@@ -22,5 +22,5 @@ export function Settings() {
                 </div>
             </div>
         </div>
-    )
+    );
 }

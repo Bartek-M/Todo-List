@@ -1,11 +1,11 @@
-import { useActive } from "/src/context"
+import { useActive } from "/src/context";
 
 import { DragItem, SVG } from "/src/components/";
 import { todoListType } from "/src/types/";
 import { defaultIcon } from "/src/utils";
 
 
-export function ListItem({ item, dragOverlay = false }: { item: todoListType, dragOverlay?: any }) {
+export function ListItem({ item, dragOverlay = false }: { item: todoListType, dragOverlay?: any; }) {
     const [active, setActive] = useActive()!;
 
     const paths = item.svgPath || defaultIcon.svgPath;
