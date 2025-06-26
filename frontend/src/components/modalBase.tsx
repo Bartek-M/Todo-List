@@ -4,7 +4,11 @@ export function ModalBase({ children, setHidden }: { children: any, setHidden: a
     const [modal, setModal] = useState<any>(null)
 
     useEffect(() => {
-        if (!children) setModal(null)
+        if (!children) {
+            if (modal) modal.hide()
+            return setModal(null)
+        }
+
         setModal(new bootstrap.Modal("#modal"))
     }, [children])
 
@@ -18,7 +22,7 @@ export function ModalBase({ children, setHidden }: { children: any, setHidden: a
     }, [modal])
 
     return (
-        <div className="modal fade" id="modal" aria-hidden="true">
+        <div className="modal fade" id="modal">
             {children}
         </div>
     )

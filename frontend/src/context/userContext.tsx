@@ -35,7 +35,7 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
     }
 
     return user ? (
-        <UserContext.Provider value={[user, setUser]}>
+        <UserContext.Provider value={[user, setUser] as userContext}>
             <ActiveProvider>
                 {children}
             </ActiveProvider>

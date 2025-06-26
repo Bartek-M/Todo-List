@@ -13,6 +13,7 @@ import { homeModals } from "/src/types"
 
 export function Home({ redirect }: { redirect: string }) {
     const [modal, setModal] = useState<homeModals>(null)
+    const hideModal = () => setModal(null)
     useDynamicStyles("/css/home.css")
 
     return (
@@ -20,7 +21,7 @@ export function Home({ redirect }: { redirect: string }) {
             <Sidebar setModal={setModal} />
             <Main />
 
-            <ModalBase setHidden={() => setModal(null)}>
+            <ModalBase setHidden={hideModal}>
                 {
                     modal === "settings" && <Settings /> ||
                     modal === "newList" && <ListModal />

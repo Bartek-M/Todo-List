@@ -55,6 +55,10 @@ button {
     background-color: var(--btn-bg-active)!important;
 }
 
+.btn:focus:not(:hover) {
+    background-color: var(--bs-btn-bg);
+} 
+
 @media (max-width: 576px) {
     .offcanvas-body {
         display: flex;

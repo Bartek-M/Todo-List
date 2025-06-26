@@ -7,10 +7,8 @@ import { refInput } from "/src/types"
 
 
 async function submitLogin(login: refInput, passw: refInput, navigator: any) {
-    if (!login || !passw) return
-    
-    let valLogin = login.value
-    let valPassw = passw.value
+    let valLogin = login?.value
+    let valPassw = passw?.value
     if (!valLogin || !valPassw) return
     
     apiFetch(`auth/login/`, "POST", {

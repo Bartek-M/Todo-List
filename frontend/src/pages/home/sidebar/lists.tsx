@@ -1,30 +1,29 @@
-import { useUser, useActive } from "/src/context";
-import { SVG } from "/src/components/";
-import { defaultIcon } from "/src/utils";
+import { arrayMove } from "@dnd-kit/sortable";
+
+import { DragList } from "/src/components";
+import { useUser } from "/src/context";
+import { ListItem } from "./listItem";
+import { userType, dragListProps } from "/src/types";
 
 
 export function Lists() {
-    const [user,] = useUser()!;
-    const [active, setActive] = useActive()!;
-    if (!user) return;
+    const [user, setUser] = useUser()!;
+    if (!user) return null;
+
+    const handleDragEnd: dragListProps["dragEnd"] = (draggedIndex, overIndex) => {
+        setUser((user: userType) => {
+            const newLists = arrayMove(user.lists, draggedIndex, overIndex);
+
+            return {
+                ...user,
+                lists: newLists
+            }
+        })
+    }
 
     return (
         <div className="list-group py-4 px-4">
-            {user.lists.map((todoList, index) => {
-                let paths = todoList.svgPath || defaultIcon.svgPath;
-                let fill = todoList.fill || defaultIcon.fill;
-
-                return (
-                    <button
-                        key={"sidebar-" + todoList.id}
-                        className={`btn list-group-item-action fw-medium border-0  ${todoList.extraClass || ""} ${active?.id == todoList.id ? "active" : ""}`}
-                        onClick={() => setActive({ id: todoList.id, index: index, opened: true })}
-                    >
-                        <SVG paths={paths} fill={fill} />
-                        {"\u00A0"} {todoList.name}
-                    </button>
-                )
-            })}
+            <DragList Element={ListItem} title="sidebar" list={user.lists} dragEnd={handleDragEnd} />
         </div>
-    )
+    );
 }

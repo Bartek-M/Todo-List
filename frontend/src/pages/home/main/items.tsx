@@ -7,8 +7,10 @@ export function Items() {
     const [user,] = useUser()!
     const [active,] = useActive()!
     if (!user || !active) return
+    
+    let currentList = user.lists.find((l) => l.id == active.id)
+    if (!currentList) return
 
-    let currentList = user.lists[active.index]
     let paths = currentList.svgPath || defaultIcon.svgPath
     let fill = currentList.fill || defaultIcon.fill
 

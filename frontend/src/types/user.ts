@@ -9,9 +9,10 @@ export type userType = {
 export type todoListType = {
     id: string;
     name: string;
+    index: number;
+    type: 0 | 1 | 2;
     created_at: string;
-    default: boolean;
-    items: itemType[] | null;
+    items: itemType[] | undefined;
 
     extraClass?: string
     svgPath?: string[];

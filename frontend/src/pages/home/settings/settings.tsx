@@ -3,7 +3,7 @@ import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs"
 
 export function Settings() {
     return (
-        <div className="modal-dialog modal-fullscreen-sm-down modal-dialog-centered">
+        <div className="modal-dialog modal-fullscreen-sm-down modal-dialog-centered modal-dialog-scrollable">
             <div className="modal-content">
                 <div className="modal-header pb-0">
                     <nav className="nav nav-tabs flex-nowrap border-0" role="tablist">
