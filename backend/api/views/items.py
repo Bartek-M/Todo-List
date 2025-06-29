@@ -46,7 +46,7 @@ def tick_item(request, list_id: int, item_id: int) -> HttpResponse:
 
 @login_required
 @require_http_methods(["PATCH"])
-def edit_item(request, list_id: int, item_id: int) -> None:
+def edit_item(request, list_id: int, item_id: int):
     return
 
 

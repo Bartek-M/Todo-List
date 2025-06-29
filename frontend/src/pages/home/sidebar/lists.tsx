@@ -1,23 +1,35 @@
-import { arrayMove } from "@dnd-kit/sortable";
-
 import { DragList } from "/src/components";
 import { useUser } from "/src/context";
 import { ListItem } from "./listItem";
 import { userType, dragListProps } from "/src/types";
+import { apiFetch } from "/src/utils";
 
 
 export function Lists() {
     const [user, setUser] = useUser()!;
     if (!user) return null;
 
-    const handleDragEnd: dragListProps["dragEnd"] = (draggedIndex, overIndex) => {
+    const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
         setUser((user: userType) => {
-            const newLists = arrayMove(user.lists, draggedIndex, overIndex);
-
             return {
                 ...user,
                 lists: newLists
             };
+        });
+
+        apiFetch("list/reorder/", "PATCH", {
+            updated_items: updatedItems
+        }).then((result) => {
+            if (!result) return; // something went wrong?
+            let [resp, data] = result;
+
+            if (data.errors) {
+                return;
+            }
+
+            if (!resp.ok) {
+                return; // something went wrong?
+            }
         });
     };
 

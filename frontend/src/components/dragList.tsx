@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { DndContext, DragEndEvent, DragOverlay, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
+import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 
-import { dragListProps } from "/src/types";
+import { dragListProps, updatedItemsType } from "/src/types";
 
 
 function handleDragEnd(event: DragEndEvent, list: any[], dragEnd: dragListProps["dragEnd"]) {
@@ -13,7 +13,14 @@ function handleDragEnd(event: DragEndEvent, list: any[], dragEnd: dragListProps[
     let draggedIndex = list.findIndex(item => item.id == dragged.id);
     let overIndex = list.findIndex(item => item.id == over.id);
 
-    dragEnd(draggedIndex, overIndex);
+    const newLists = arrayMove(list, draggedIndex, overIndex);
+    let updatedItems: updatedItemsType = {}
+    for (let i = Math.min(draggedIndex, overIndex); i < newLists.length; i++) {
+        updatedItems[newLists[i].id] = i;
+    }
+
+    if (!Object.keys(updatedItems).length) return;
+    dragEnd(newLists, updatedItems);
 }
 
 

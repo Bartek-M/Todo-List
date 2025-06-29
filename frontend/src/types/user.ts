@@ -11,7 +11,7 @@ export type todoListType = {
     name: string;
     index: number;
     type: 0 | 1 | 2;
-    created_at: string;
+    created_date: string;
     items: itemType[] | undefined;
 
     extraClass?: string;

@@ -68,7 +68,7 @@ def change_theme(request) -> JsonResponse:
 
 @login_required
 @require_http_methods(["PATCH"])
-def change_username(request) -> None:
+def change_username(request):
     form = UsernameForm(request.user, data=json.loads(request.body))
 
     if not form.is_valid():
@@ -80,7 +80,7 @@ def change_username(request) -> None:
 
 @login_required
 @require_http_methods(["PATCH"])
-def change_password(request) -> None:
+def change_password(request):
     form = PasswordForm(request.user, data=json.loads(request.body))
 
     if not form.is_valid():

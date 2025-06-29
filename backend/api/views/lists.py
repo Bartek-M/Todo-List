@@ -13,7 +13,7 @@ from api.decorators import login_required
 @login_required
 @require_http_methods(["POST"])
 def create_list(request) -> JsonResponse:
-    form = ListForm(request.body)
+    form = ListForm(json.loads(request.body))
 
     if not form.is_valid():
         return JsonResponse({"errors": json.loads(form.errors.as_json())}, status=400)
@@ -22,12 +22,28 @@ def create_list(request) -> JsonResponse:
     todo_list.author = request.user
     todo_list.save()
 
-    return JsonResponse(todo_list.date(), status=200)
+    return JsonResponse(todo_list.data(), status=200)
 
 
 @login_required
 @require_http_methods(["PATCH"])
-def edit_list(request, list_id: int) -> None:
+def reorder_lists(request):
+    updated_items = json.loads(request.body).get("updated_items", {})
+
+    for id, index in updated_items.items():
+        try:
+            todo_list = request.user.todolist_set.get(id=id)
+            todo_list.index = int(index)
+            todo_list.save()
+        except:
+            continue
+
+    return HttpResponse(status=200)
+
+
+@login_required
+@require_http_methods(["PATCH"])
+def edit_list(request, list_id: int):
     return
 
 
@@ -51,6 +67,7 @@ def delete_list(request, list_id: int) -> HttpResponse:
 
 urlpatterns = [
     path("create/", create_list),
+    path("reorder/", reorder_lists),
     path("<int:list_id>/edit/", edit_list),
     path("<int:list_id>/delete/", delete_list),
 ]

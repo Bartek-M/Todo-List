@@ -5,11 +5,11 @@ from api.models import TodoList, Item
 
 class ListForm(forms.ModelForm):
     class Meta:
-        modal = TodoList
+        model = TodoList
         fields = ("name",)
 
 
 class ItemForm(forms.ModelForm):
     class Meta:
-        modal = Item
+        model = Item
         fields = ("text", "notes", "deadline_date")
