@@ -37,7 +37,7 @@ button {
     box-shadow: none!important;
 }
 
-.btn:has(svg), h4:has(svg) {
+.btn:has(svg), h3:has(svg) {
     display: inline-flex;
     align-items: center;
     padding: 0;

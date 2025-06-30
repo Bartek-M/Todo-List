@@ -1,4 +1,4 @@
 export { Main } from "./main";
 
-export { Items } from "./items";
+export { ItemsList } from "./itemsList";
 export { Options } from "./options";

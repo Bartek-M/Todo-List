@@ -1,15 +1,11 @@
 import { useActive } from "/src/context";
 
-import { DragItem, SVG } from "/src/components/";
+import { DragItem, ListTitle } from "/src/components/";
 import { todoListType } from "/src/types/";
-import { defaultIcon } from "/src/utils";
 
 
 export function ListItem({ item, dragOverlay = false }: { item: todoListType, dragOverlay?: any; }) {
     const [active, setActive] = useActive()!;
-
-    const paths = item.svgPath || defaultIcon.svgPath;
-    const fill = item.fill || defaultIcon.fill;
 
     return (
         <DragItem
@@ -19,8 +15,7 @@ export function ListItem({ item, dragOverlay = false }: { item: todoListType, dr
             isDraggable={item.type != 0}
             dragOverlay={dragOverlay}
         >
-            <SVG paths={paths} fill={fill} />
-            {"\u00A0"} {item.name}
+            <ListTitle todoList={item} />
         </DragItem>
     );
 }

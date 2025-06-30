@@ -1,7 +1,7 @@
-import { todoListType } from "/src/types";
+import { defaultListType, todoListType } from "/src/types";
 
-export function mergeLists(list1: todoListType[], list2: todoListType[]) {
-    const merged = [...list1];
+export function mergeLists(list1: defaultListType[], list2: todoListType[]) {
+    const merged = [...(list1 as todoListType[])];
 
     list2.sort((a, b) => {
         if (a.index != b.index) return a.index - b.index;

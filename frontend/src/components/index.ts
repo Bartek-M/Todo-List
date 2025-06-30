@@ -4,3 +4,4 @@ export { Loading } from "./loading";
 export { SVG } from "./svg";
 export { DragList } from "./dragList";
 export { DragItem } from "./dragItem";
+export { ListTitle } from "./listTitle"

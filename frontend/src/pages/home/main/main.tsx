@@ -1,12 +1,16 @@
-import { useActive } from "/src/context";
+import { useActive, useUser } from "/src/context";
 
-import { Items, Options } from ".";
-import { SVG } from "/src/components";
+import { ItemsList, Options } from ".";
+import { SVG, ListTitle } from "/src/components";
 
 export function Main() {
+    const [user,] = useUser()!;
     const [active, setActive] = useActive()!;
+    if (!user) return
 
-    if (!active) {
+    let todoList = user.lists.find((l) => l.id == active?.id);
+
+    if (!active || !todoList) {
         return (
             <div className="position-relative">
                 <div className="position-absolute top-50 start-50 translate-middle">
@@ -21,7 +25,12 @@ export function Main() {
             <button className="navbar-toggler border-0 position-absolute" id="main-close" onClick={() => setActive({ ...active, opened: false })}>
                 <SVG paths={["M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"]} width="24" height="24" />
             </button>
-            <Items />
+            <div className="p-5 mt-3 mx-2">
+                <h3 className="mb-4">
+                    <ListTitle todoList={todoList} />
+                </h3>
+                <ItemsList todoList={todoList} />
+            </div>
             <Options />
         </div>
     );

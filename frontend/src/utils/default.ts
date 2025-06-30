@@ -1,4 +1,6 @@
-export const defaultLists = [
+import { defaultListType } from "/src/types";
+
+export const defaultLists: defaultListType[] = [
     {
         name: "Inbox",
         fill: "#469ffc",
