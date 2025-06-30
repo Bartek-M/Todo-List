@@ -32,7 +32,7 @@ Base URL: `auth/`
 ---
 ### `POST login/`
 - Body: `JSON`
-```json
+```py
 {
     "login_data"    : str,
     "password"      : str
@@ -43,7 +43,7 @@ Base URL: `auth/`
 
 ### `POST register/`
 - Body: `JSON`
-```json
+```py
 {
     "username"  : str,
     "email"     : str,
@@ -59,7 +59,7 @@ Base URL: `auth/`
 
 ### `GET csrf/`
 - Response: `200 OK + JSON`
-```json
+```py
 { "message": "CSRF cookie set"  }
 ```
 ---
@@ -74,7 +74,7 @@ All endpoints require being logged in
 ---
 ### `GET me/`
 - Response: `200 OK + JSON`
-```json
+```py
 {
     "id"        : str,
     "username"  : str,
@@ -91,11 +91,11 @@ All endpoints require being logged in
 
 ### `PATCH theme/`
 - Body: `JSON`
-```json
+```py
 { "theme": 0 | 1 | 2 } // auto | dark | light
 ```
 - Response: `200 OK + JSON`
-```json
+```py
 { "theme": 0 | 1 | 2 } // auto | dark | light
 ```
 
@@ -115,14 +115,14 @@ All endpoints require being logged in
 ---
 ### `POST create/`
 - Body: `JSON`
-```json
+```py
 {
     "name"  : str,
     "type"  : int
 }
 ```
 - Response: `200 OK + JSON`
-```json
+```py
 {
     "id"            : str,
     "name"          : str,
@@ -135,7 +135,7 @@ All endpoints require being logged in
 
 ### `PATCH reorder/`
 - Body: `JSON`
-```json
+```py
 {
     "updated_items": {
         (id: str): (new_index: int),
@@ -148,13 +148,13 @@ All endpoints require being logged in
 
 ### `PATCH <int:list_id>/edit`
 - Body: `JSON`
-```json
+```py
 {
 
 }
 ```
 - Response: `200 OK + JSON`
-```json
+```py
 {
     
 }
@@ -175,14 +175,14 @@ All endpoints require being logged in
 ---
 ### `GET`
 - Response: `200 OK + JSON`
-```json
+```py
 [ Item, ... ]
 ```
 ---
 
 ### `POST add/`
 - Response: `200 OK + JSON`
-```json
+```py
 {
     "id"            : str,
     "text"          : str,
@@ -197,20 +197,20 @@ All endpoints require being logged in
 
 ### `PATCH <int:item_id>/tick/`
 - Response: `200 OK + JSON`
-```json
+```py
 { "ticked"  : bool }
 ```
 ---
 
 ### `PATCH <int:item_id>/edit/`
 - Body: `JSON`
-```json
+```py
 {
 
 }
 ```
 - Response: `200 OK + JSON`
-```json
+```py
 {
 
 }
