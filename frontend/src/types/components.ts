@@ -8,9 +8,6 @@ export type svgProps = {
 
 export type dragItemProps = {
     id: string;
-    children: any;
-    elementClass: string;
-    elementOnClick: any;
     isDraggable?: boolean;
     dragOverlay?: boolean;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function ModalBase({ children, setHidden }: { children: any, setHidden: any; }) {
+export function ModalBase({ children, elementClass="", setHidden }: { children: any, elementClass: string, setHidden: any; }) {
     const [modal, setModal] = useState<any>(null);
 
     useEffect(() => {
@@ -23,7 +23,11 @@ export function ModalBase({ children, setHidden }: { children: any, setHidden: a
 
     return (
         <div className="modal fade" id="modal">
-            {children}
+            <div className={`modal-dialog modal-dialog-centered ${elementClass}`}>
+                <div className="modal-content shadow border-0">
+                    {children}
+                </div>
+            </div>
         </div>
     );
 }

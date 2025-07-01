@@ -4,13 +4,13 @@ import { CSS } from "@dnd-kit/utilities";
 import { dragItemProps } from "/src/types";
 
 
-export function DragItem({ id, children, elementClass, elementOnClick, isDraggable = true, dragOverlay = false }: dragItemProps) {
+export function getDragProps({ id, isDraggable = true, dragOverlay = false }: dragItemProps) {
     const { listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: id });
-
+    
     const style: React.CSSProperties = {
         transform: CSS.Transform.toString(transform),
         transition,
-        opacity: isDragging && !dragOverlay ? 0.5 : undefined,
+        opacity: isDragging && !dragOverlay ? 0.4 : undefined,
         ...(dragOverlay && {
             position: "fixed",
             zIndex: 999,
@@ -19,17 +19,11 @@ export function DragItem({ id, children, elementClass, elementOnClick, isDraggab
         })
     };
 
-    return (
-        <button
-            className={elementClass}
-            onClick={elementOnClick}
-            {...(isDraggable && {
-                ref: setNodeRef,
-                style: style,
-                ...listeners
-            })}
-        >
-            {children}
-        </button>
-    );
+    if (!isDraggable) return {};
+
+    return {
+        ref: setNodeRef,
+        style: style,
+        ...listeners
+    }
 }

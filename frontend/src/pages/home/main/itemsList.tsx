@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 
 import { Item } from "./item"
+import { DragList } from "/src/components";
 import { useUser } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { todoListType, itemType, userType } from "/src/types";
+import { todoListType, userType } from "/src/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
@@ -32,10 +33,8 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     );
 
     return (
-        <>
-            {todoList.items.map((listItem: itemType) => (
-                <Item key={`list-item-${listItem.id}`} item={listItem} />
-            ))}
-        </>
+        <div className="list-group">
+            <DragList Element={Item} title="items" list={todoList.items} dragEnd={(newLists, updated_items) => { console.log(newLists, updated_items) }} />
+        </div>
     );
 }
