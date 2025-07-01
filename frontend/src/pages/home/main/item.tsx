@@ -3,15 +3,15 @@ import { getDragProps } from "/src/utils";
 
 
 export function Item({ item, dragOverlay = false }: { item: itemType, dragOverlay?: any; }) {
-    const props = getDragProps({ id: item.id, dragOverlay: dragOverlay });
+    const props  = getDragProps({ id: item.id, dragOverlay: dragOverlay });
 
     return (
-        <div
-            className="btn list-group-item-action border-0"
-            onClick={() => { console.log("Item clicked"); }}
+        <li
+            className={`checklist-item ${dragOverlay ? "dragged-item" : ""}`}
             {...props}
         >
-            {item.text}
-        </div>
+            <input className="form-check-input ms-0" type="checkbox" id={`check-${item.id}-${dragOverlay}`} />
+            <div className="w-100" onClick={() => { console.log("Item clicked"); }}>{item.text}</div>
+        </li>
     );
 }

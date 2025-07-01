@@ -26,7 +26,7 @@ export function Main() {
                 <SVG paths={["M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"]} width="24" height="24" />
             </button>
             <div className="p-5 mt-3 mx-2">
-                <h3 className="mb-4">
+                <h3 className="ps-3 mb-5">
                     <ListTitle todoList={todoList} />
                 </h3>
                 <ItemsList todoList={todoList} />

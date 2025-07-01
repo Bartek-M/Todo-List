@@ -25,16 +25,22 @@ html, body, #appMount {
     user-select: none;
 }
 
+*:focus {
+    box-shadow: none !important;
+    border-color: var(--bs-border-color) !important; 
+    outline: none !important;
+}
+
 a {
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 a:hover:not(.hidden-link), button:hover {
     opacity: 0.75;
 }
 
-button {
-    box-shadow: none!important;
+.form-check-input:checked {
+    --bs-border-color: #0d6efd;
 }
 
 .modal-backdrop {
@@ -86,4 +92,16 @@ button {
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.dragged-item {
+    position: fixed !important;
+    z-index: 999 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+    cursor: grab !important;
+    opacity: 1!important;
+}
+
+.dragged-item * {
+    cursor: grab !important;
 }

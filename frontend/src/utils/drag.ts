@@ -11,12 +11,6 @@ export function getDragProps({ id, isDraggable = true, dragOverlay = false }: dr
         transform: CSS.Transform.toString(transform),
         transition,
         opacity: isDragging && !dragOverlay ? 0.4 : undefined,
-        ...(dragOverlay && {
-            position: "fixed",
-            zIndex: 999,
-            boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
-            cursor: "grab"
-        })
     };
 
     if (!isDraggable) return {};

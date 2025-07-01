@@ -1,14 +1,25 @@
 import { useEffect } from "react";
 
-import { Item } from "./item"
+import { Item } from "./item";
 import { DragList } from "/src/components";
 import { useUser } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { todoListType, userType } from "/src/types";
+import { todoListType, userType, dragListProps } from "/src/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
     const [_, setUser] = useUser()!;
+
+    const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
+        setUser((user: userType) => {
+            let currentList = user.lists.find(i => i.id == todoList.id);
+            if (currentList) currentList.items = newLists;
+
+            return { ...user };
+        });
+
+        console.log(updatedItems);
+    };
 
     useEffect(() => {
         if (todoList.items) return;
@@ -19,8 +30,8 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
 
             if (resp.ok && data.items) {
                 setUser((user: userType) => {
-                    let currentList = user.lists.find(i => i.id == todoList.id)
-                    if (currentList) currentList.items = data.items
+                    let currentList = user.lists.find(i => i.id == todoList.id);
+                    if (currentList) currentList.items = data.items;
 
                     return { ...user };
                 });
@@ -33,8 +44,8 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     );
 
     return (
-        <div className="list-group">
-            <DragList Element={Item} title="items" list={todoList.items} dragEnd={(newLists, updated_items) => { console.log(newLists, updated_items) }} />
-        </div>
+        <ul className="list-group">
+            <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} />
+        </ul>
     );
 }

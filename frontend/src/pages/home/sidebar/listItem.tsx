@@ -11,7 +11,7 @@ export function ListItem({ item, dragOverlay = false }: { item: todoListType, dr
 
     return (
         <button
-            className={`btn list-group-item-action fw-medium border-0 ${item.extraClass || ""} ${active?.id == item.id ? "active" : ""}`}
+            className={`btn list-group-item-action fw-medium border-0 ${item.extraClass || ""} ${active?.id == item.id ? "active" : ""}  ${dragOverlay ? "dragged-item" : ""}`}
             onClick={() => setActive({ id: item.id, opened: true })}
             {...props}
         >
