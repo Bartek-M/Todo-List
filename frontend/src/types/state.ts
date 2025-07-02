@@ -3,6 +3,7 @@ import { userType } from "./user";
 
 
 export type boolState = boolean | null;
+export type stringState = string | null
 
 export type userContext = [userType, Dispatch<SetStateAction<userType>>] | null;
 export type userState = userType | null | false;

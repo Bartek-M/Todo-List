@@ -24,7 +24,7 @@ export function ModalBase({ children, elementClass="", setHidden }: { children: 
     return (
         <div className="modal fade" id="modal">
             <div className={`modal-dialog modal-dialog-centered ${elementClass}`}>
-                <div className="modal-content shadow border-0">
+                <div className="modal-content shadow-lg border-0">
                     {children}
                 </div>
             </div>

@@ -61,10 +61,8 @@
 }
 
 .checklist-item {
-    display: flex;
-    gap: 0.5rem;
     width: 100%;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
     margin-bottom: 0.25rem;
     border-radius: var(--bs-border-radius);
     background-color: rgb(var(--bs-body-bg-rgb));

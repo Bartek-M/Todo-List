@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Item } from "./item";
 import { DragList } from "/src/components";
 import { useUser } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { todoListType, userType, dragListProps } from "/src/types";
+import { todoListType, userType, dragListProps, stringState } from "/src/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
     const [_, setUser] = useUser()!;
+    const [editing, setEditing] = useState<stringState>(null); 
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
         setUser((user: userType) => {
@@ -45,7 +46,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
 
     return (
         <ul className="list-group">
-            <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} />
+            <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} listProps={{ editing: editing, setEditing: setEditing}} />
         </ul>
     );
 }

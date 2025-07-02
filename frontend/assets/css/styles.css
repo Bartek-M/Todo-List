@@ -39,10 +39,15 @@ a:hover:not(.hidden-link), button:hover {
     opacity: 0.75;
 }
 
+textarea::placeholder {
+    color: rgb(var(--bs-secondary-rgb))!important;
+}
+
 .form-check-input:checked {
     --bs-border-color: #0d6efd;
 }
 
+/* modal */
 .modal-backdrop {
     background-color: unset!important;
 }
@@ -58,12 +63,18 @@ a:hover:not(.hidden-link), button:hover {
   opacity: 1;
 }
 
+/* svg */
+svg {
+    pointer-events: none;
+}
+
 .btn:has(svg), h3:has(svg) {
     display: inline-flex;
     align-items: center;
     padding: 0;
 }
 
+/* nav + lists */
 .nav-link:focus:not(:hover) {
     border-bottom-color: transparent!important;
 }

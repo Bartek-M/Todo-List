@@ -24,7 +24,7 @@ function handleDragEnd(event: DragEndEvent, list: any[], dragEnd: dragListProps[
 }
 
 
-export function DragList({ Element, title, list, dragEnd }: dragListProps) {
+export function DragList({ Element, title, list, dragEnd, listProps = {} }: dragListProps) {
     const [activeId, setActiveId] = useState<string | null>(null);
     const sensors = useSensors(
         useSensor(MouseSensor, { activationConstraint: { delay: 250, distance: 3, tolerance: 5 } }),
@@ -40,7 +40,7 @@ export function DragList({ Element, title, list, dragEnd }: dragListProps) {
         >
             <SortableContext items={list} >
                 {list.map((item) => (
-                    <Element key={title + item.id} item={item} />
+                    <Element key={title + item.id} item={item} listProps={listProps} />
                 ))}
             </SortableContext>
             <DragOverlay>

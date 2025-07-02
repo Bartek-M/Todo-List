@@ -32,7 +32,9 @@ export type itemType = {
     id: string,
     text: string,
     notes: string,
+    index: number,
     ticked: boolean,
+    schedule_date: number,
     deadline_date: number,
     create_date: number,
     deleted: boolean

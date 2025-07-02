@@ -17,6 +17,7 @@ export type dragListProps = {
     title: string;
     list: any[];
     dragEnd: (newList: any[], updatedItems: updatedItemsType) => void;
+    listProps?: any;
 }
 
 export type updatedItemsType = { [id: string]: number; };
