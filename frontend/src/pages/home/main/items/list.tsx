@@ -8,8 +8,8 @@ import { todoListType, userType, dragListProps, stringState } from "/src/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
-    const [_, setUser] = useUser()!;
-    const [editing, setEditing] = useState<stringState>(null); 
+    const [, setUser] = useUser()!;
+    const [editing, setEditing] = useState<stringState>(null);
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
         setUser((user: userType) => {
@@ -46,7 +46,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
 
     return (
         <ul className="list-group">
-            <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} listProps={{ editing: editing, setEditing: setEditing}} />
+            <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} listProps={{ editing: editing, setEditing: setEditing }} />
         </ul>
     );
 }

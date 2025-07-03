@@ -31,11 +31,12 @@ export type defaultListType = {
 export type itemType = {
     id: string,
     text: string,
-    notes: string,
+    notes?: string,
     index: number,
-    ticked: boolean,
-    schedule_date: number,
-    deadline_date: number,
-    create_date: number,
-    deleted: boolean
+    todo_list?: string,
+    ticked?: boolean,
+    schedule_date?: number,
+    deadline_date?: number,
+    create_date?: number,
+    deleted?: boolean
 }

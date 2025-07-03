@@ -68,3 +68,26 @@
     background-color: rgb(var(--bs-body-bg-rgb));
     list-style: none;
 }
+
+.checklist-item:has(+ .editing) {
+    margin-bottom: 1.75rem;
+}
+
+.checklist-item.editing {
+    margin-bottom: 1.75rem;
+    padding: 1.5rem 1rem;
+    animation: scale-up 0.2s ease;
+}
+
+@keyframes scale-up {
+    0% { transform: scale(0.9) }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+[contenteditable][data-placeholder]:empty:before {
+    content: attr(data-placeholder);
+    color: rgb(var(--bs-secondary-rgb));
+    pointer-events: none;
+    display: block;
+}

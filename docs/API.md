@@ -176,7 +176,7 @@ All endpoints require being logged in
 ### `GET`
 - Response: `200 OK + JSON`
 ```py
-[ Item, ... ]
+{ "items"   : [ Item, ... ] }
 ```
 ---
 

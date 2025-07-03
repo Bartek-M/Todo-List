@@ -39,7 +39,7 @@ def auth_register(request):
 
 
 @ensure_csrf_cookie
-def get_csrf(request):
+def get_csrf(_):
     return JsonResponse({"message": "CSRF cookie set"}, status=200)
 
 

@@ -63,6 +63,8 @@ class Item(models.Model):
     notes = models.TextField(max_length=500, blank=True, null=True)
     todo_list = models.ForeignKey("TodoList", on_delete=models.CASCADE)
     ticked = models.BooleanField(default=False)
+    index = models.IntegerField(default=0)
+    schedule_date = models.DateTimeField(blank=True, null=True)
     deadline_date = models.DateTimeField(blank=True, null=True)
     create_date = models.DateTimeField(default=timezone.now)
     deleted = models.BooleanField(default=False)
@@ -72,14 +74,17 @@ class Item(models.Model):
             "id": str(self.id),
             "text": self.text,
             "notes": self.notes,
+            "index": self.index,
             "ticked": self.ticked,
+            "todo_list": self.todo_list.id,
+            "schedule_date": self.schedule_date,
             "deadline_date": self.deadline_date,
             "create_date": self.create_date,
             "deleted": self.deleted
         }
 
-    def __repr__(self) -> str:
-        return f"[{self.id}] from {self.todo_list.name}: {self.text}"
+    def __str__(self) -> str:
+        return f"{self.id}| {self.todo_list.author.username}({self.todo_list.author.id}) on {self.todo_list.name}: {self.text}"
 
 
 class File(models.Model):

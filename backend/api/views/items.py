@@ -13,7 +13,7 @@ from api.decorators import login_required
 @login_required
 def get_items(request, list_id: int) -> JsonResponse:
     todo_list = get_object_or_404(TodoList, id=list_id, author=request.user)
-    return JsonResponse(todo_list.get_items(), status=200)
+    return JsonResponse({ "items": todo_list.get_items()} , status=200)
 
 
 @login_required

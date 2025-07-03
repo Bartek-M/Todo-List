@@ -1,6 +1,7 @@
 import { useActive, useUser } from "/src/context";
 
-import { ItemsList, Options } from ".";
+import { Options } from ".";
+import { ItemsList } from "./items";
 import { SVG, ListTitle } from "/src/components";
 
 export function Main() {
@@ -31,7 +32,7 @@ export function Main() {
                 </h3>
                 <ItemsList todoList={todoList} />
             </div>
-            <Options />
+            <Options todoList={todoList} />
         </div>
     );
 }
