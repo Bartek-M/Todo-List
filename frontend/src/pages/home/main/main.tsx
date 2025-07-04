@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { useActive, useUser } from "/src/context";
 
 import { Options } from ".";
 import { ItemsList } from "./items";
 import { SVG, ListTitle } from "/src/components";
+import { stringState } from "/src/types";
+
 
 export function Main() {
     const [user,] = useUser()!;
     const [active, setActive] = useActive()!;
-    if (!user) return
+    if (!user) return;
 
     let todoList = user.lists.find((l) => l.id == active?.id);
+    const [editing, setEditing] = useState<stringState>(null);
 
     if (!active || !todoList) {
         return (
@@ -30,9 +34,9 @@ export function Main() {
                 <h3 className="ps-3 mb-5">
                     <ListTitle todoList={todoList} />
                 </h3>
-                <ItemsList todoList={todoList} />
+                <ItemsList todoList={todoList} editing={editing} setEditing={setEditing} />
             </div>
-            <Options todoList={todoList} />
+            <Options todoList={todoList} editing={editing} setEditing={setEditing} />
         </div>
     );
 }

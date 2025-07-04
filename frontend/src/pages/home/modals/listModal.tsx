@@ -20,10 +20,10 @@ function createList(name: refInput, setUser: any) {
         }
 
         if (resp.ok) {
-            setUser((user: userType) => {
-                user.lists.push(data);
-                return user;
-            });
+            setUser((prev: userType) => ({
+                ...prev,
+                lists: [...prev.lists, data]
+            }));
         }
     });
 

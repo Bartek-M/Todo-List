@@ -1,25 +1,33 @@
 import { useUser } from "/src/context";
 import { SVG } from "/src/components";
-import { todoListType, userType } from "/src/types";
+import { userType, listComponentProps } from "/src/types";
 
 
-export function Options({ todoList }: { todoList: todoListType }) {
+export function Options({ todoList }: listComponentProps) {
     const [_, setUser] = useUser()!;
 
     return (
         <div className="controls-wrapper justify-content-evenly mt-auto" id="main-options">
             <button className="btn border-0" onClick={() => {
-                setUser((user: userType) => {
-                    let currentList = user.lists.find(i => i.id == todoList.id);
-                    if (currentList) currentList.items?.unshift({
-                        id: "new",
-                        text: "",
-                        notes: "",
-                        index: -1,
-                        todo_list: todoList.id
+                setUser((prev: userType) => {
+                    const updatedLists = prev.lists.map(list => {
+                        if (list.id !== todoList.id) return list;
+                        let items = list.items ? [...list.items] : [];
+                        if (items[0]?.id === "new") items.shift();
+
+                        items.unshift({
+                            id: "new",
+                            text: "",
+                            notes: "",
+                            index: -1,
+                            todo_list: todoList.id,
+                        });
+
+                        return { ...list, items };
                     });
-                    return { ...user }
-                })
+
+                    return { ...prev, lists: updatedLists };
+                });
             }}>
                 <SVG paths={["M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"]} />
             </button>

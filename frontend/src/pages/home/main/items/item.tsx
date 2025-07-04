@@ -26,18 +26,20 @@ export function Item({ item, dragOverlay = false, listProps = {} }: { item: item
 
                 setEditing(currentEditing ? null : item.id);
                 if (editing == "new") {
-                    setUser((user: userType) => {
-                        let currentList = user.lists.find(i => i.id == item.todo_list);
-                        if (currentList) currentList.items?.shift();
-
-                        return { ...user };
+                    setUser((prev: userType) => {
+                        const lists = prev.lists.map(list =>
+                            list.id === item.todo_list
+                                ? { ...list, items: list.items?.slice(1) }
+                                : list
+                        );
+                        return { ...prev, lists };
                     });
                 }
             }}
             {...dragProps}
         >
             <div className="hstack gap-2">
-                <input className="form-check-input m-0" type="checkbox" id={`check-${item.id}-${dragOverlay}`} />
+                <input className="form-check-input m-0" type="checkbox" id={`check-${item.id}-${dragOverlay}`} defaultChecked={item.ticked} />
                 {currentEditing
                     ? <input className="border-0 outline-0 p-0" defaultValue={item.text} placeholder="Title" type="text" ref={titleRef} />
                     : <ItemTitle item={item} />

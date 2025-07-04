@@ -1,40 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 
 import { Item } from "./item";
 import { DragList } from "/src/components";
 import { useUser } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { todoListType, userType, dragListProps, stringState } from "/src/types";
+import { userType, dragListProps, listComponentProps } from "/src/types";
 
 
-export function ItemsList({ todoList }: { todoList: todoListType; }) {
+export function ItemsList({ todoList, editing, setEditing }: listComponentProps) {
     const [, setUser] = useUser()!;
-    const [editing, setEditing] = useState<stringState>(null);
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
-        setUser((user: userType) => {
-            let currentList = user.lists.find(i => i.id == todoList.id);
-            if (currentList) currentList.items = newLists;
-
-            return { ...user };
+        setUser((prev: userType) => {
+            const lists = prev.lists.map(list =>
+                list.id === todoList.id
+                    ? { ...list, items: newLists }
+                    : list
+            );
+            return { ...prev, lists };
         });
 
         console.log(updatedItems);
     };
 
     useEffect(() => {
-        if (todoList.items) return;
+        setEditing(null);
+        if (todoList.items) {
+            if (todoList.items[0].id == "new") {
+                setUser((prev: userType) => {
+                    const lists = prev.lists.map(list =>
+                        list.id === todoList.id
+                            ? { ...list, items: list.items?.slice(1) }
+                            : list
+                    );
+                    return { ...prev, lists };
+                });
+            }
+            return;
+        };
 
         apiFetch(`list/${todoList.id}/items/`, "GET").then((result) => {
             if (!result) return;
             let [resp, data] = result;
 
             if (resp.ok && data.items) {
-                setUser((user: userType) => {
-                    let currentList = user.lists.find(i => i.id == todoList.id);
-                    if (currentList) currentList.items = data.items;
-
-                    return { ...user };
+                setUser((prev: userType) => {
+                    const lists = prev.lists.map(list =>
+                        list.id === todoList.id
+                            ? { ...list, items: data.items }
+                            : list
+                    );
+                    return { ...prev, lists };
                 });
             }
         });

@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
+import { todoListType, stringState } from ".";
+
 export type svgProps = {
     paths: string[];
     fill?: string;
@@ -21,3 +24,9 @@ export type dragListProps = {
 }
 
 export type updatedItemsType = { [id: string]: number; };
+
+export type listComponentProps = {
+    todoList: todoListType;
+    editing: stringState;
+    setEditing: Dispatch<SetStateAction<stringState>>;
+}

@@ -76,12 +76,12 @@
 .checklist-item.editing {
     margin-bottom: 1.75rem;
     padding: 1.5rem 1rem;
-    animation: scale-up 0.2s ease;
+    animation: scale-up 0.3s ease;
 }
 
 @keyframes scale-up {
     0% { transform: scale(0.9) }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
