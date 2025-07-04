@@ -51,9 +51,6 @@ class TodoList(models.Model):
             "create_date": self.create_date,
         }
 
-    def get_items(self) -> list:
-        return [item.data() for item in self.item_set.all()]
-
     def __str__(self) -> str:
         return f"{self.id}| {self.name} by {self.author.username}({self.author.id}) - {len(self.item_set.all())} items"
 
@@ -74,8 +71,8 @@ class Item(models.Model):
             "id": str(self.id),
             "text": self.text,
             "notes": self.notes,
-            "index": self.index,
             "ticked": self.ticked,
+            "index": self.index,
             "todo_list": self.todo_list.id,
             "schedule_date": self.schedule_date,
             "deadline_date": self.deadline_date,

@@ -11,5 +11,5 @@ urlpatterns = [
     path("auth/", include(views.auth)),
     path("user/", include(views.user)),
     path("list/", include(views.lists)),
-    path("list/<int:list_id>/items/", include(views.items))
+    path("list/<str:list_id>/items/", include(views.items))
 ]

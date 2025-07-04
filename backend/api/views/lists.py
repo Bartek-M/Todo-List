@@ -68,6 +68,6 @@ def delete_list(request, list_id: int) -> HttpResponse:
 urlpatterns = [
     path("create/", create_list),
     path("reorder/", reorder_lists),
-    path("<int:list_id>/edit/", edit_list),
-    path("<int:list_id>/delete/", delete_list),
+    path("<str:list_id>/edit/", edit_list),
+    path("<str:list_id>/delete/", delete_list),
 ]
