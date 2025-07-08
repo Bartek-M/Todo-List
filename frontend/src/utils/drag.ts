@@ -1,9 +1,9 @@
 import { useSortable } from "@dnd-kit/sortable";
 
-import { dragItemProps } from "/src/types";
+import { dragProps } from "/src/types";
 
 
-export function getDragProps({ id, isDraggable = true, dragOverlay = false }: dragItemProps) {
+export function getDragProps({ id, isDraggable = true, dragOverlay = false }: dragProps) {
     const { listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: id });
     
     const style: React.CSSProperties = {

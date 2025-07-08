@@ -1,32 +1,30 @@
-import { useUser } from "/src/context";
+import { useTodoLists } from "/src/context";
 import { SVG } from "/src/components";
-import { userType, listComponentProps } from "/src/types";
+import { listComponentProps, todoListState } from "/src/types";
 
 
 export function Options({ todoList }: listComponentProps) {
-    const [_, setUser] = useUser()!;
+    const [_, setTodoLists] = useTodoLists()!;
 
     return (
         <div className="controls-wrapper justify-content-evenly mt-auto" id="main-options">
             <button className="btn border-0" onClick={() => {
-                setUser((prev: userType) => {
-                    const updatedLists = prev.lists.map(list => {
+                setTodoLists((prev: todoListState) => {
+                    return prev.map(list => {
                         if (list.id !== todoList.id) return list;
                         let items = list.items ? [...list.items] : [];
-                        if (items[0]?.id === "new") items.shift();
+                        if (items[0]?.id.startsWith("new")) items.shift();
 
                         items.unshift({
-                            id: "new",
+                            id: `new-${(new Date).getTime()}`,
                             text: "",
                             notes: "",
                             index: -1,
                             todo_list: todoList.id,
                         });
 
-                        return { ...list, items };
+                        return { ...list, items: items };
                     });
-
-                    return { ...prev, lists: updatedLists };
                 });
             }}>
                 <SVG paths={["M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"]} />

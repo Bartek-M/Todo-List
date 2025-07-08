@@ -1,21 +1,24 @@
 import { useEffect, useRef } from "react";
+import { useTodoLists } from "/src/context";
+
 import { ItemTitle, ItemNotes, ItemOptions } from ".";
-import { itemType, userType } from "/src/types";
+import { dragItemProps, todoListState } from "/src/types";
 import { getDragProps } from "/src/utils";
-import { useUser } from "/src/context";
 
 
-export function Item({ item, dragOverlay = false, listProps = {} }: { item: itemType, dragOverlay?: any, listProps: any; }) {
-    const [_, setUser] = useUser()!;
-    const titleRef = useRef<HTMLInputElement>(null);
+export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProps ) {
+    const [_, setTodoLists] = useTodoLists()!;
+
     const { editing, setEditing } = listProps;
     const dragProps = getDragProps({ id: item.id, isDraggable: !editing, dragOverlay: dragOverlay });
+    
+    const titleRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (item.id == "new") setEditing(item.id);
+        if (item.id.startsWith("new")) setEditing(item.id);
     }, [item.id]);
 
-    const currentEditing = editing == item.id || item.id == "new";
+    const currentEditing = editing == item.id || item.id.startsWith("new");
 
     return (
         <li
@@ -25,14 +28,13 @@ export function Item({ item, dragOverlay = false, listProps = {} }: { item: item
                 if (element.matches("input") || element.matches("div[contenteditable]") || element.matches("button")) return;
 
                 setEditing(currentEditing ? null : item.id);
-                if (editing == "new") {
-                    setUser((prev: userType) => {
-                        const lists = prev.lists.map(list =>
+                if (editing && editing.startsWith("new")) {
+                    setTodoLists((prev: todoListState) => {
+                        return prev.map(list =>
                             list.id === item.todo_list
                                 ? { ...list, items: list.items?.slice(1) }
                                 : list
                         );
-                        return { ...prev, lists };
                     });
                 }
             }}

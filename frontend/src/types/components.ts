@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
-import { todoListType, stringState } from ".";
+import { Dispatch, SetStateAction, ReactNode } from "react";
+import { todoListType, userType, stringState } from ".";
 
 export type svgProps = {
     paths: string[];
@@ -9,7 +9,7 @@ export type svgProps = {
     height?: string;
 }
 
-export type dragItemProps = {
+export type dragProps = {
     id: string;
     isDraggable?: boolean;
     dragOverlay?: boolean;
@@ -23,10 +23,22 @@ export type dragListProps = {
     listProps?: any;
 }
 
+export type dragItemProps = {
+    item: any,
+    index: number,
+    dragOverlay?: boolean,
+    listProps: any
+}
+
 export type updatedItemsType = { [id: string]: number; };
 
 export type listComponentProps = {
     todoList: todoListType;
     editing: stringState;
     setEditing: Dispatch<SetStateAction<stringState>>;
+}
+
+export type contextChildProps = {
+    children: ReactNode, 
+    user: userType
 }

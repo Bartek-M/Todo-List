@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { ActiveProvider } from "./";
+import { ActiveProvider, TodoListProvider } from "./";
 
 import { userContext, userState } from "/src/types";
 import { apiFetch, defaultLists, mergeLists } from "/src/utils";
@@ -36,9 +36,11 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
 
     return user ? (
         <UserContext.Provider value={[user, setUser] as userContext}>
-            <ActiveProvider>
-                {children}
-            </ActiveProvider>
+            <TodoListProvider user={user}>
+                <ActiveProvider user={user}>
+                    {children}
+                </ActiveProvider>
+            </TodoListProvider>
         </UserContext.Provider>
     ) : <Navigate to={redirect} />;
 }

@@ -39,8 +39,8 @@ export function DragList({ Element, title, list, dragEnd, listProps = {} }: drag
             sensors={sensors}
         >
             <SortableContext items={list} >
-                {list.map((item) => (
-                    <Element key={title + item.id} item={item} listProps={listProps} />
+                {list.map((item, index) => (
+                    <Element key={title + item.id} item={item} index={index} listProps={listProps} />
                 ))}
             </SortableContext>
             <DragOverlay>

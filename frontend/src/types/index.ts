@@ -3,16 +3,20 @@ export type {
     stringState,
     userContext, 
     userState, 
+    todoListContext,
+    todoListState,
     activeContext, 
     activeState
 } from "./state";
 
 export type { 
     svgProps, 
+    dragProps,
     dragItemProps, 
     dragListProps, 
     updatedItemsType, 
-    listComponentProps 
+    listComponentProps,
+    contextChildProps
 } from "./components";
 
 export type { 

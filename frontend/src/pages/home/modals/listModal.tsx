@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { useUser } from "/src/context";
+import { useTodoLists } from "/src/context";
 
 import { apiFetch } from "/src/utils";
-import { refInput, userType } from "/src/types";
+import { refInput, todoListState } from "/src/types";
 
 
-function createList(name: refInput, setUser: any) {
+function createList(name: refInput, setTodoLists: any) {
     let valName = name?.value;
     if (!valName) return;
 
@@ -20,10 +20,10 @@ function createList(name: refInput, setUser: any) {
         }
 
         if (resp.ok) {
-            setUser((prev: userType) => ({
+            setTodoLists((prev: todoListState) => ([
                 ...prev,
-                lists: [...prev.lists, data]
-            }));
+                data
+            ]));
         }
     });
 
@@ -32,11 +32,11 @@ function createList(name: refInput, setUser: any) {
 }
 
 export function ListModal() {
-    const [_, setUser] = useUser()!;
+    const [_, setTodoLists] = useTodoLists()!;
     const listName = useRef(null);
 
     return (
-        <form onSubmit={(e) => { e.preventDefault(); createList(listName.current, setUser); }}>
+        <form onSubmit={(e) => { e.preventDefault(); createList(listName.current, setTodoLists); }}>
             <div className="modal-header border-0">
                 <h1 className="modal-title fs-5">New list</h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

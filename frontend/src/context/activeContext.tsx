@@ -1,23 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { activeContext, activeState } from "/src/types";
-import { useUser } from "./userContext";
+import { activeContext, activeState, contextChildProps } from "/src/types";
 
 
 const ActiveContext = React.createContext<activeContext>(null);
 export function useActive() { return useContext(ActiveContext); }
 
-export function ActiveProvider({ children }: { children: React.ReactNode; }) {
-    const [user,] = useUser()!;
-    const [active, setActive] = useState<activeState>(null);
-    if (!user) return;
+export function ActiveProvider({ children, user }: contextChildProps) {
+    const [active, setActive] = useState<activeState>({ id: user.lists[0].id, index: 0, opened: false });
 
     useEffect(() => {
-        if (!active) {
-            let list = user.lists[0];
-            setActive({ id: list.id, opened: false });
-        }
-        // get items
     }, []);
 
     return (

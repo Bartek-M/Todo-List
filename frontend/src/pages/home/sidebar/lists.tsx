@@ -1,21 +1,18 @@
+import { useActive, useTodoLists } from "/src/context";
+
 import { DragList } from "/src/components";
-import { useUser } from "/src/context";
 import { ListItem } from "./listItem";
-import { userType, dragListProps } from "/src/types";
+import { dragListProps } from "/src/types";
 import { apiFetch } from "/src/utils";
 
 
 export function Lists() {
-    const [user, setUser] = useUser()!;
-    if (!user) return null;
+    const [todoLists, setTodoLists] = useTodoLists()!;
+    const [active, setActive] = useActive()!;
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
-        setUser((user: userType) => {
-            return {
-                ...user,
-                lists: newLists
-            };
-        });
+        setTodoLists(newLists);
+        if (updatedItems[active.id] !== undefined) setActive((prev) => ({ ...prev, index: updatedItems[active.id] }));
 
         apiFetch("list/reorder/", "PATCH", {
             updated_items: updatedItems
@@ -35,7 +32,7 @@ export function Lists() {
 
     return (
         <div className="list-group py-4 px-4">
-            <DragList Element={ListItem} title="sidebar" list={user.lists} dragEnd={handleDragEnd} />
+            <DragList Element={ListItem} title="sidebar" list={todoLists} dragEnd={handleDragEnd} />
         </div>
     );
 }

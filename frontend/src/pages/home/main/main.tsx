@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useActive, useUser } from "/src/context";
+import { useActive, useTodoLists } from "/src/context";
 
 import { Options } from ".";
 import { ItemsList } from "./items";
@@ -8,11 +8,10 @@ import { stringState } from "/src/types";
 
 
 export function Main() {
-    const [user,] = useUser()!;
+    const [todoLists,] = useTodoLists()!;
     const [active, setActive] = useActive()!;
-    if (!user) return;
 
-    let todoList = user.lists.find((l) => l.id == active?.id);
+    let todoList = todoLists[active.index];
     const [editing, setEditing] = useState<stringState>(null);
 
     if (!active || !todoList) {
