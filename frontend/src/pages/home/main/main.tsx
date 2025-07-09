@@ -1,18 +1,15 @@
-import { useState } from "react";
 import { useActive, useTodoLists } from "/src/context";
 
 import { Options } from ".";
 import { ItemsList } from "./items";
 import { SVG, ListTitle } from "/src/components";
-import { stringState } from "/src/types";
 
 
 export function Main() {
     const [todoLists,] = useTodoLists()!;
     const [active, setActive] = useActive()!;
 
-    let todoList = todoLists[active.index];
-    const [editing, setEditing] = useState<stringState>(null);
+    const todoList = todoLists[active.index];
 
     if (!active || !todoList) {
         return (
@@ -33,9 +30,9 @@ export function Main() {
                 <h3 className="ps-3 mb-5">
                     <ListTitle todoList={todoList} />
                 </h3>
-                <ItemsList todoList={todoList} editing={editing} setEditing={setEditing} />
+                <ItemsList todoList={todoList} />
             </div>
-            <Options todoList={todoList} editing={editing} setEditing={setEditing} />
+            <Options todoList={todoList} />
         </div>
     );
 }

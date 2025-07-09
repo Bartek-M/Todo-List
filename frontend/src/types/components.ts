@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, ReactNode } from "react";
-import { todoListType, userType, stringState } from ".";
+import { ReactNode } from "react";
+import { userType } from ".";
 
 export type svgProps = {
     paths: string[];
@@ -31,12 +31,6 @@ export type dragItemProps = {
 }
 
 export type updatedItemsType = { [id: string]: number; };
-
-export type listComponentProps = {
-    todoList: todoListType;
-    editing: stringState;
-    setEditing: Dispatch<SetStateAction<stringState>>;
-}
 
 export type contextChildProps = {
     children: ReactNode, 

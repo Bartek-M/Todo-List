@@ -1,9 +1,9 @@
 import { useTodoLists } from "/src/context";
 import { SVG } from "/src/components";
-import { listComponentProps, todoListState } from "/src/types";
+import { todoListState, todoListType } from "/src/types";
 
 
-export function Options({ todoList }: listComponentProps) {
+export function Options({ todoList }: { todoList: todoListType }) {
     const [_, setTodoLists] = useTodoLists()!;
 
     return (

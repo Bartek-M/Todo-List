@@ -6,7 +6,7 @@ export type {
     todoListContext,
     todoListState,
     activeContext, 
-    activeState
+    activeState,
 } from "./state";
 
 export type { 
@@ -15,7 +15,6 @@ export type {
     dragItemProps, 
     dragListProps, 
     updatedItemsType, 
-    listComponentProps,
     contextChildProps
 } from "./components";
 

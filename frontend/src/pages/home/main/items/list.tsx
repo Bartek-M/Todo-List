@@ -1,14 +1,15 @@
-import { useEffect, } from "react";
+import { useEffect, useState } from "react";
 
 import { Item } from "./item";
 import { DragList } from "/src/components";
 import { useTodoLists } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { dragListProps, listComponentProps, todoListState } from "/src/types";
+import { dragListProps, stringState, todoListState, todoListType } from "/src/types";
 
 
-export function ItemsList({ todoList, editing, setEditing }: listComponentProps) {
+export function ItemsList({ todoList }: { todoList: todoListType }) {
     const [, setTodoLists] = useTodoLists()!;
+    const [editing, setEditing] = useState<stringState>(null);
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
         setTodoLists((prev: todoListState) => {
@@ -23,19 +24,8 @@ export function ItemsList({ todoList, editing, setEditing }: listComponentProps)
     };
 
     useEffect(() => {
-        setEditing(null);
-        if (todoList.items?.length) {
-            if (todoList.items[0].id.startsWith("new")) {
-                setTodoLists((prev: todoListState) => {
-                    return prev.map(list =>
-                        list.id === todoList.id
-                            ? { ...list, items: list.items?.slice(1) }
-                            : list
-                    );
-                });
-            }
-            return;
-        };
+        setEditing(null)
+        if (todoList.items) return
 
         apiFetch(`list/${todoList.id}/items/`, "GET").then((result) => {
             if (!result) return;

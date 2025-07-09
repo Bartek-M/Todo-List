@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { itemType } from "/src/types";
 
-export function ItemNotes({ item }: { item: itemType; }) {
-    const textRef = useRef<HTMLDivElement>(null);
+export function ItemNotes({ item, notesRef }: { item: itemType, notesRef: any }) {
     const [charCount, setCharCount] = useState(0);
     const charLimit = 500;
 
     const handleInput = () => {
-        const text = textRef.current?.innerText || "";
+        const text = notesRef.current?.innerText || "";
         setCharCount(text.length);
     };
-    useEffect(handleInput, [textRef.current])
+    useEffect(handleInput, [notesRef.current])
 
     return (
         <div style={{ margin: "0 0.5rem 1rem 1.5rem" }}>
@@ -21,7 +20,7 @@ export function ItemNotes({ item }: { item: itemType; }) {
                 contentEditable
                 suppressContentEditableWarning
                 style={{ maxHeight: "calc(var(--bs-body-line-height) * 6rem)" }}
-                ref={textRef}
+                ref={notesRef}
                 onInput={handleInput}
             >
                 {item.notes}
