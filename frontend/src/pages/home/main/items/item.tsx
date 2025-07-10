@@ -17,6 +17,7 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
     const notesRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (editing == item.id) return;
         if (item.id.startsWith("new")) setEditing(item.id);
     }, []);
 

@@ -1,3 +1,3 @@
 export { Main } from "./main";
 
-export { Options } from "./options";
+export { Options } from "./items/newItem";

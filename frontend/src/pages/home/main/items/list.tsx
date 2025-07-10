@@ -7,7 +7,7 @@ import { apiFetch } from "/src/utils";
 import { dragListProps, stringState, todoListState, todoListType } from "/src/types";
 
 
-export function ItemsList({ todoList }: { todoList: todoListType }) {
+export function ItemsList({ todoList }: { todoList: todoListType; }) {
     const [, setTodoLists] = useTodoLists()!;
     const [editing, setEditing] = useState<stringState>(null);
 
@@ -24,8 +24,8 @@ export function ItemsList({ todoList }: { todoList: todoListType }) {
     };
 
     useEffect(() => {
-        setEditing(null)
-        if (todoList.items) return
+        setEditing(null);
+        if (todoList.items) return;
 
         apiFetch(`list/${todoList.id}/items/`, "GET").then((result) => {
             if (!result) return;
