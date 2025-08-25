@@ -2,6 +2,6 @@ export { ItemsList } from "./list";
 
 export { Item } from "./item";
 
-export { ItemOptions } from "./options";
+export { ItemOptions } from "../itemOptions/";
 export { ItemTitle } from "./title";
 export { ItemNotes } from "./notes";

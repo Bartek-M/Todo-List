@@ -23,7 +23,7 @@ async function submitLogin(login: refInput, passw: refInput, navigator: any) {
         }
 
         if (resp.ok) {
-            navigator("/home");
+            navigator("/");
             console.log("logged in");
         }
     });

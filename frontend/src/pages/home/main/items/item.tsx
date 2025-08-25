@@ -33,6 +33,10 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
                 notes: notesInput?.innerText ?? ""
             };
 
+            for (const [key, value] of Object.entries(editedItem)) {
+                console.log(key, value)
+            }
+
             if (!editedItem.text) {
                 setTodoLists((prev) =>
                     prev.map((list) =>
@@ -50,7 +54,8 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             className={`checklist-item ${dragOverlay ? "dragged-item" : ""} ${editingCurrent ? "editing shadow-sm" : ""}`}
             onClick={(e) => {
                 let element = (e.target as HTMLElement);
-                if (element.matches("input") || element.matches("div[contenteditable]") || element.matches("button")) return;
+                console.log(element)
+                if (!element.matches("li") && !element.matches("div:not([contenteditable])")) return;
 
                 setEditing(editingCurrent ? null : item.id);
             }}
@@ -66,7 +71,7 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             {editingCurrent && (
                 <>
                     <ItemNotes item={item} notesRef={notesRef} />
-                    <ItemOptions />
+                    <ItemOptions item={item} />
                 </>
             )}
         </li>

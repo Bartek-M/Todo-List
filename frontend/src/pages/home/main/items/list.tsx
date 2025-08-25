@@ -24,7 +24,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     };
 
     useEffect(() => {
-        setEditing(null);
+        setEditing("2");
         if (todoList.items) return;
 
         apiFetch(`list/${todoList.id}/items/`, "GET").then((result) => {

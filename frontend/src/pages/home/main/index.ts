@@ -1,3 +1,4 @@
 export { Main } from "./main";
 
-export { Options } from "./items/newItem";
+export { NewItemButton } from "./itemOptions/";
+export { ItemsList } from "./items" 

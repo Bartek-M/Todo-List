@@ -1,6 +1,12 @@
-export { NavBase } from "./navBase";
-export { ModalBase } from "./modalBase";
-export { Loading } from "./loading";
-export { SVG } from "./svg";
-export { DragList } from "./dragList";
-export { ListTitle } from "./listTitle"
+export { NavBase } from "./wrapper/navBase";
+export { DragList } from "./wrapper/dragList";
+
+export { ModalBase } from "./wrapper/modalBase";
+
+export { SVG } from "./element/svg";
+export { ListTitle } from "./element/listTitle"
+
+export { Select } from "./input/select"
+export { SlidingInput } from "./input/slidingInput"
+
+export { Loading } from "./other/loading";

@@ -2,9 +2,13 @@
     --bs-tertiary-bg-rgb: 245, 246, 248;
     --bs-secondary-color: rgba(0, 0, 0, 1);
 
+    --bs-secondary-color: #abaeb1;
+
     --btn-bg-active: #dfe2e7;
     --bs-link-color: #000;
     --bs-link-hover-color: #777;
+
+    --transition-time: 0.24s;
 }
 
 html, body, #appMount {

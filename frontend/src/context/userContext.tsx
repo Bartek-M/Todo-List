@@ -2,9 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { ActiveProvider, TodoListProvider } from "./";
 
-import { userContext, userState } from "/src/types";
-import { apiFetch, defaultLists, mergeLists } from "/src/utils";
 import { Loading } from "/src/components";
+import { defaultLists } from "/src/defaults"
+import { apiFetch, mergeLists } from "/src/utils";
+import { userContext, userState } from "/src/types";
 
 
 const UserContext = React.createContext<userContext>(null);

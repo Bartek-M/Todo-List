@@ -33,7 +33,7 @@ export type itemType = {
     text: string,
     notes?: string,
     index: number,
-    todo_list?: string,
+    todo_list: string,
     ticked?: boolean,
     schedule_date?: number,
     deadline_date?: number,

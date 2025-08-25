@@ -15,7 +15,9 @@ export type {
     dragItemProps, 
     dragListProps, 
     updatedItemsType, 
-    contextChildProps
+    contextChildProps,
+    SlidingInputProps,
+    SelectProps
 } from "./components";
 
 export type { 

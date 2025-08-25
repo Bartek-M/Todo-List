@@ -3,11 +3,11 @@ import { SVG } from "/src/components";
 import { todoListState, todoListType } from "/src/types";
 
 
-export function Options({ todoList }: { todoList: todoListType }) {
+export function NewItemButton({ todoList }: { todoList: todoListType }) {
     const [_, setTodoLists] = useTodoLists()!;
 
     return (
-        <button className="position-fixed end-0 bottom-0 btn btn-primary border-0 rounded-circle p-2 m-4" onClick={() => {
+        <button className="btn btn-primary border-0 rounded-circle p-2" onClick={() => {
             setTodoLists((prev: todoListState) => {
                 return prev.map(list => {
                     if (list.id !== todoList.id) return list;

@@ -1,8 +1,8 @@
 import { useActive, useTodoLists } from "/src/context";
 
-import { Options } from ".";
-import { ItemsList } from "./items";
+import { NewItemButton, ItemsList } from ".";
 import { SVG, ListTitle } from "/src/components";
+import { defaultIconFill } from "/src/defaults";
 
 
 export function Main() {
@@ -22,17 +22,22 @@ export function Main() {
     }
 
     return (
-        <div className="d-flex flex-column h-100" id="list-view">
+        <div className="d-flex flex-column h-100  position-relative" id="list-view">
             <button className="navbar-toggler border-0 position-absolute" id="main-close" onClick={() => setActive({ ...active, opened: false })}>
                 <SVG paths={["M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"]} width="24" height="24" />
             </button>
             <div className="p-5 mt-3 mx-2">
-                <h3 className="ps-3 mb-5">
+                <h3 className="ps-3 mb-5 d-flex flex-wrap text-break">
                     <ListTitle todoList={todoList} />
+                    <button className="ms-auto btn border-0">
+                        <SVG paths={["M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"]} fill={defaultIconFill} width="1.5em" height="1.5em" />
+                    </button>
                 </h3>
                 <ItemsList todoList={todoList} />
             </div>
-            <Options todoList={todoList} />
+            <div className="position-absolute bottom-0 end-0 pe-5 pb-4 me-2">
+                <NewItemButton todoList={todoList} />
+            </div>
         </div>
     );
 }
