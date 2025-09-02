@@ -1,16 +1,56 @@
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
-import { SelectProps } from "/src/types";
+import { SelectProps, boolState } from "/src/types";
+import { transitionTime, slidingIconWidth } from "/src/defaults";
 
 
-export function Select({ title, elements, inputRef, clickEvent }: SelectProps) {
+export function Select({ title, elements, inputRef, clickEvent, sliding }: SelectProps) {
+    const [opened, setOpened] = useState<boolState>(false);
     const selectRef = useRef<any>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (
+                selectRef.current && !selectRef.current.contains(e.target as Node) &&
+                inputRef.current && !inputRef.current.contains(e.target as Node)
+            ) {
+                const dropdown = bootstrap.Dropdown.getInstance(selectRef.current);
+                if (dropdown) {
+                    dropdown.hide();
+                    setOpened(false);
+                }
+            }
+        };
+
+        if (opened) {
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }, [opened]);
+
+    const handleToggler = (e: React.MouseEvent) => {
+        const currentState = !selectRef.current.classList.contains("show");
+        const dropdown = bootstrap.Dropdown.getOrCreateInstance(selectRef.current, {
+            reference: "parent",
+            offset: [sliding ? -slidingIconWidth : 0, 2],
+            popperConfig: {
+                strategy: "fixed"
+            }
+        });
+
+        if (currentState) {
+            setTimeout(() => dropdown.show(), !e.isTrusted ? transitionTime : 0);
+        } else {
+            const event = new MouseEvent("mousedown", { bubbles: true, cancelable: true });
+            document.dispatchEvent(event);
+        }
+
+        setOpened(currentState);
+    };
 
     return (
         <div>
-            <button className="btn" ref={inputRef} data-bs-auto-close="true" data-bs-toggle="dropdown" onClick={() => {
-                // new bootstrap.Dropdown(selectRef.current).toggle();
-            }}>{title}</button>
+            <button className="btn border" ref={inputRef} onClick={handleToggler}>{title}</button>
             <div className="dropdown-menu" ref={selectRef}>
                 {elements.map((el) => (
                     <button

@@ -38,9 +38,10 @@ export type contextChildProps = {
 }
 
 export type SlidingInputProps = {
-    iconPaths: string[];
-    inputElement: React.ReactNode;
-    inputRef: any
+    iconPaths: string[]
+    inputElement: React.ReactNode
+    inputRef: any;
+    wrapperRef?: any
 }
 
 export type SelectProps = {
@@ -48,8 +49,9 @@ export type SelectProps = {
     elements: {
         id: string;
         name: string;
-        active: boolean
+        active?: boolean
     }[];
     inputRef: any
     clickEvent: (id: string) => void
+    sliding?: boolean
 }

@@ -11,7 +11,7 @@ export function ListItem({ item, index, dragOverlay = false }: dragItemProps) {
 
     return (
         <button
-            className={`btn list-group-item-action fw-medium border-0 ${item.extraClass || ""} ${active?.id == item.id ? "active" : ""}  ${dragOverlay ? "dragged-item" : ""}`}
+            className={`btn list-group-item-action border-0 ${item.extraClass || ""}${active?.id == item.id ? " active" : ""}${dragOverlay ? " dragged-item" : ""}`}
             onClick={() => setActive({ id: item.id, index: index, opened: true })}
             {...props}
         >

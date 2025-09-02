@@ -54,7 +54,6 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             className={`checklist-item ${dragOverlay ? "dragged-item" : ""} ${editingCurrent ? "editing shadow-sm" : ""}`}
             onClick={(e) => {
                 let element = (e.target as HTMLElement);
-                console.log(element)
                 if (!element.matches("li") && !element.matches("div:not([contenteditable])")) return;
 
                 setEditing(editingCurrent ? null : item.id);

@@ -9,8 +9,8 @@ import { SlidingInputProps } from "/src/types";
     iconPaths={[...]}
     inputElement={
         <div>
-            <div>{contents}</div>
             <button ref={inputRef}>{opener}</button>
+            <div>{contents}</div>
         </div>
     }
     inputRef={}
@@ -21,7 +21,6 @@ export function SlidingInput({ iconPaths, inputElement, inputRef }: SlidingInput
     const [open, setOpen] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
@@ -29,9 +28,11 @@ export function SlidingInput({ iconPaths, inputElement, inputRef }: SlidingInput
             }
         };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, []);
+        if (open) {
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => document.removeEventListener("mousedown", handleClickOutside);
+        }
+    }, [open]);
 
     useEffect(() => {
         if (!inputRef.current || !open) return;

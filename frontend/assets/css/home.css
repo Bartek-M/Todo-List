@@ -103,13 +103,13 @@
     max-height: 1.5rem;
     overflow: hidden;
     white-space: nowrap;
-    color: var(--bs-secondary-color);
+    color: var(--bs-tertiary-color);
     transition: var(--transition-time);
 }
 
 .sliding-input > :last-child > button {
     padding: 0 !important;
-    border: 0;
+    border: 0 !important;
     min-width: max-content;
     color: inherit!important;
 }
