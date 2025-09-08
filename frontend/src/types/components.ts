@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { userType } from ".";
 
 export type svgProps = {
     paths: string[];
@@ -34,7 +33,6 @@ export type updatedItemsType = { [id: string]: number; };
 
 export type contextChildProps = {
     children: ReactNode, 
-    user: userType
 }
 
 export type SlidingInputProps = {

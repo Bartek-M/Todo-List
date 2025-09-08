@@ -1,1 +1,1 @@
-export type homeModals = "newList" | "settings" | null;
+export type homeModals = "newList" | null;

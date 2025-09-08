@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useDynamicStyles } from "/src/utils/";
-import { UserProvider } from "/src/context";
+import { UserProvider, ActiveProvider, TodoListProvider } from "/src/context";
 
 import { Main } from "./main";
 import { Sidebar } from "./sidebar";
-import { Settings } from "./settings";
 import { ListModal } from "./modals";
 
 import { ModalBase } from "/src/components";
@@ -12,10 +11,6 @@ import { homeModals } from "/src/types";
 
 
 const modals = {
-    settings: {
-        elementClass: "modal-dialog-scrollable modal-fullscreen-sm-down",
-        children: <Settings />
-    },
     newList: {
         elementClass: "modal-sm",
         children: <ListModal />
@@ -28,16 +23,20 @@ export function Home({ redirect }: { redirect: string; }) {
     const hideModal = () => setModal(null);
     useDynamicStyles("/css/home.css");
 
-    const modalConfig = modal ? modals[modal] : { elementClass: "", children: null }
+    const modalConfig = modal ? modals[modal] : { elementClass: "", children: null };
 
     return (
         <UserProvider redirect={redirect}>
-            <Sidebar setModal={setModal} />
-            <Main />
+            <TodoListProvider>
+                <ActiveProvider>
+                    <Sidebar setModal={setModal} />
+                    <Main />
 
-            <ModalBase elementClass={modalConfig.elementClass} setHidden={hideModal}>
-                {modalConfig.children}
-            </ModalBase>
+                    <ModalBase elementClass={modalConfig.elementClass} setHidden={hideModal}>
+                        {modalConfig.children}
+                    </ModalBase>
+                </ActiveProvider>
+            </TodoListProvider>
         </UserProvider>
     );
 }
