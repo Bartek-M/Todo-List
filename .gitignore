@@ -1,9 +1,13 @@
 .vscode/
 .vs/
 __pycache__/
+dev/
+
 node_modules/
-migrations/
 dist/
-db.sqlite
-.env
 *.tsbuildinfo
+
+migrations/
+db.sqlite
+
+.env

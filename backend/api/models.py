@@ -73,7 +73,7 @@ class Item(models.Model):
             "notes": self.notes,
             "ticked": self.ticked,
             "index": self.index,
-            "todo_list": self.todo_list.id,
+            "todo_list": str(self.todo_list.id),
             "schedule_date": self.schedule_date,
             "deadline_date": self.deadline_date,
             "create_date": self.create_date,
