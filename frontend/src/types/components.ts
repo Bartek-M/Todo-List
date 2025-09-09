@@ -53,3 +53,9 @@ export type SelectProps = {
     clickEvent: (id: string) => void
     sliding?: boolean
 }
+
+export type LinkProps = {
+    children: ReactNode;
+    to: string;
+    className?: string;
+}

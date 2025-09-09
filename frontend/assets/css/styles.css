@@ -54,6 +54,11 @@ textarea::placeholder {
     --bs-border-color: #0d6efd;
 }
 
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: #dfe2e7;
+    --bs-dropdown-link-active-color: var(--bs-body-color);
+}
+
 /* modal */
 .modal-backdrop {
     background-color: unset!important;

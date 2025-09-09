@@ -17,7 +17,8 @@ export type {
     updatedItemsType, 
     contextChildProps,
     SlidingInputProps,
-    SelectProps
+    SelectProps,
+    LinkProps
 } from "./components";
 
 export type { 

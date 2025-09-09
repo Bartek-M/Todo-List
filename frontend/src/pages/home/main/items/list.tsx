@@ -48,7 +48,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     );
 
     return (
-        <ul className="list-group">
+        <ul className="list-group" key={ todoList.id }>
             <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} listProps={{ editing: editing, setEditing: setEditing }} />
         </ul>
     );

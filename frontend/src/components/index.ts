@@ -3,6 +3,7 @@ export { DragList } from "./wrapper/dragList";
 
 export { ModalBase } from "./wrapper/modalBase";
 
+export { Link } from "./element/link"
 export { SVG } from "./element/svg";
 export { ListTitle } from "./element/listTitle"
 
