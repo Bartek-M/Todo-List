@@ -3,6 +3,10 @@
 __pycache__/
 dev/
 
+logs
+*.log
+.cache
+
 node_modules/
 dist/
 *.tsbuildinfo
@@ -11,3 +15,5 @@ migrations/
 db.sqlite
 
 .env
+.env.*
+!.env.example
