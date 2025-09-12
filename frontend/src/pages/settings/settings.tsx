@@ -1,9 +1,11 @@
 import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs";
-
+import { useDynamicStyles } from "/src/utils";
 
 export function Settings() {
+    if (!useDynamicStyles("/css/home.css")) return;
+
     return (
-        <div className="d-flex w-100"> 
+        <div className="d-flex w-100">
             <nav className="nav nav-tabs flex-column flex-nowrap border-0" role="tablist">
                 <button className="nav-link active" data-bs-toggle="tab" data-bs-target="#setting-account-tab">Account</button>
                 <button className="nav-link" data-bs-toggle="tab" data-bs-target="#setting-general-tab">General</button>

@@ -31,18 +31,24 @@ export type dragItemProps = {
 
 export type updatedItemsType = { [id: string]: number; };
 
-export type contextChildProps = {
+export type childProps = {
     children: ReactNode, 
 }
 
-export type SlidingInputProps = {
+export type authRouteProps = { 
+    mode: "protected" | "guest", 
+    redirect: string; 
+    fallback: ReactNode
+} 
+
+export type slidingInputProps = {
     iconPaths: string[]
     inputElement: React.ReactNode
     inputRef: any;
     wrapperRef?: any
 }
 
-export type SelectProps = {
+export type selectProps = {
     title: string;
     elements: {
         id: string;
@@ -54,7 +60,7 @@ export type SelectProps = {
     sliding?: boolean
 }
 
-export type LinkProps = {
+export type linkProps = {
     children: ReactNode;
     to: string;
     className?: string;

@@ -1,17 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Navigate } from "react-router-dom";
-
 
 import { Loading } from "/src/components";
 import { defaultLists } from "/src/defaults";
 import { apiFetch, mergeLists } from "/src/utils";
-import { userContext, userState } from "/src/types";
+import { childProps, userContext, userState } from "/src/types";
 
 
 const UserContext = React.createContext<userContext>(null);
 export function useUser() { return useContext(UserContext); }
 
-export function UserProvider({ children, redirect }: { children: React.ReactNode, redirect: string; }) {
+export function UserProvider({ children }: childProps) {
     const [user, setUser] = useState<userState>(null);
 
     useEffect(() => {
@@ -30,14 +28,13 @@ export function UserProvider({ children, redirect }: { children: React.ReactNode
         });
     }, []);
 
-
     if (user === null) {
         return (<Loading />);
     }
 
-    return user ? (
+    return (
         <UserContext.Provider value={[user, setUser] as userContext}>
-            {children}
+            {children} 
         </UserContext.Provider>
-    ) : <Navigate to={redirect} />;
+    );
 }

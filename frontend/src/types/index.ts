@@ -15,10 +15,11 @@ export type {
     dragItemProps, 
     dragListProps, 
     updatedItemsType, 
-    contextChildProps,
-    SlidingInputProps,
-    SelectProps,
-    LinkProps
+    childProps,
+    authRouteProps,
+    slidingInputProps,
+    selectProps,
+    linkProps
 } from "./components";
 
 export type { 

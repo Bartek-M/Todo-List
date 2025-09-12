@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 
 import { SVG } from "..";
 import { defaultIconFill } from "/src/defaults";
-import { SlidingInputProps } from "/src/types";
+import { slidingInputProps } from "/src/types";
 
 /*
 <SlidingInput 
@@ -17,7 +17,7 @@ import { SlidingInputProps } from "/src/types";
 />
 */
 
-export function SlidingInput({ iconPaths, inputElement, inputRef }: SlidingInputProps) {
+export function SlidingInput({ iconPaths, inputElement, inputRef }: slidingInputProps) {
     const [open, setOpen] = useState(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
 

@@ -1,9 +1,9 @@
 import { startTransition } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { LinkProps } from "/src/types";
+import { linkProps } from "/src/types";
 
-export function Link({ children, to, className = "" }: LinkProps) {
+export function Link({ children, to, className = "" }: linkProps) {
     const navigator = useNavigate();
 
     return (

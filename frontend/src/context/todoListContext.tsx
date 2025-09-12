@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import { useUser } from "./";
-import { todoListContext, todoListState, contextChildProps } from "/src/types";
+import { todoListContext, todoListState, childProps } from "/src/types";
 
 
 const TodoListContext = React.createContext<todoListContext>(null);
 export function useTodoLists() { return useContext(TodoListContext); }
 
-export function TodoListProvider({ children }: contextChildProps) {
+export function TodoListProvider({ children }: childProps) {
     const [user,] = useUser()!;
     const [todoLists, setTodoLists] = useState<todoListState>(user.lists);
 
     useEffect(() => {
-        
+
     }, []);
 
 
@@ -20,5 +20,5 @@ export function TodoListProvider({ children }: contextChildProps) {
         <TodoListContext.Provider value={[todoLists, setTodoLists] as todoListContext}>
             {children}
         </TodoListContext.Provider>
-    )
+    );
 }

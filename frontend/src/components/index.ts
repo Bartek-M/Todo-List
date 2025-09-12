@@ -1,6 +1,6 @@
 export { NavBase } from "./wrapper/navBase";
 export { DragList } from "./wrapper/dragList";
-
+export { AuthRoute } from "./wrapper/authRoute"
 export { ModalBase } from "./wrapper/modalBase";
 
 export { Link } from "./element/link"

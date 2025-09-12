@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDynamicStyles } from "/src/utils/";
-import { UserProvider, ActiveProvider, TodoListProvider } from "/src/context";
+import { ActiveProvider, TodoListProvider } from "/src/context";
 
 import { Main } from "./main";
 import { Sidebar } from "./sidebar";
@@ -18,25 +18,24 @@ const modals = {
 };
 
 
-export function Home({ redirect }: { redirect: string; }) {
+export function Home() {
     const [modal, setModal] = useState<homeModals>(null);
-    const hideModal = () => setModal(null);
-    useDynamicStyles("/css/home.css");
 
+    const hideModal = () => setModal(null);
     const modalConfig = modal ? modals[modal] : { elementClass: "", children: null };
 
-    return (
-        <UserProvider redirect={redirect}>
-            <TodoListProvider>
-                <ActiveProvider>
-                    <Sidebar setModal={setModal} />
-                    <Main />
+    if (!useDynamicStyles("/css/home.css")) return;
 
-                    <ModalBase elementClass={modalConfig.elementClass} setHidden={hideModal}>
-                        {modalConfig.children}
-                    </ModalBase>
-                </ActiveProvider>
-            </TodoListProvider>
-        </UserProvider>
+    return (
+        <TodoListProvider>
+            <ActiveProvider>
+                <Sidebar setModal={setModal} />
+                <Main />
+
+                <ModalBase elementClass={modalConfig.elementClass} setHidden={hideModal}>
+                    {modalConfig.children}
+                </ModalBase>
+            </ActiveProvider>
+        </TodoListProvider>
     );
 }

@@ -2,7 +2,7 @@ import { NavBase } from "/src/components";
 import { useDynamicStyles } from "/src/utils";
 
 export function Welcome() {
-    useDynamicStyles("/css/welcome.css");
+    if (!useDynamicStyles("/css/welcome.css")) return;
 
     return (
         <NavBase>
