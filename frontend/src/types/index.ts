@@ -29,5 +29,4 @@ export type {
     itemType 
 } from "./user";
 
-export type { homeModals } from "./modals";
 export type { refInput } from "./reference";

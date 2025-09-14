@@ -1,8 +1,10 @@
-import { homeModals } from "/src/types";
 import { SVG, Link } from "/src/components";
+import { useModal } from "/src/context";
 
 
-export function Options({ setModal }: { setModal: (value: homeModals) => void; }) {
+export function Options() {
+    const [, setModal] = useModal();
+
     return (
         <div className="controls-wrapper justify-content-between mt-auto">
             <button className="btn border-0 text-body-secondary" onClick={() => setModal("newList")}>

@@ -1,1 +1,0 @@
-export { ListModal } from "./listModal";

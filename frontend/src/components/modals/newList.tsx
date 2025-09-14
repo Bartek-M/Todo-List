@@ -31,7 +31,7 @@ function createList(name: refInput, setTodoLists: any) {
     modal.hide();
 }
 
-export function ListModal() {
+export function NewList() {
     const [_, setTodoLists] = useTodoLists()!;
     const listName = useRef(null);
 

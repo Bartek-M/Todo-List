@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { useUser } from "./";
+import { useUser } from "../";
 import { todoListContext, todoListState, childProps } from "/src/types";
 
 
