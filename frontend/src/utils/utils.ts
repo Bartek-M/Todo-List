@@ -4,7 +4,11 @@ export function mergeLists(list1: defaultListType[], list2: todoListType[]) {
     const merged = [...(list1 as todoListType[])];
 
     list2.sort((a, b) => {
-        if (a.index != b.index) return a.index - b.index;
+        if (
+            a.index != 0 && b.index != 0 &&
+            a.index != b.index
+        ) return a.index - b.index;
+
         return new Date(a.created_date).getTime() - new Date(b.created_date).getTime()
     })
 

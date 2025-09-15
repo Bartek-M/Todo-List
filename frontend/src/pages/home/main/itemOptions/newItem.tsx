@@ -1,6 +1,6 @@
 import { useTodoLists } from "/src/context";
 import { SVG } from "/src/components";
-import { todoListState, todoListType } from "/src/types";
+import { todoListType } from "/src/types";
 
 
 export function NewItemButton({ todoList }: { todoList: todoListType }) {
@@ -8,7 +8,7 @@ export function NewItemButton({ todoList }: { todoList: todoListType }) {
 
     return (
         <button className="btn btn-primary border-0 rounded-circle p-2" onClick={() => {
-            setTodoLists((prev: todoListState) => {
+            setTodoLists((prev) => {
                 return prev.map(list => {
                     if (list.id !== todoList.id) return list;
                     let items = list.items ? [...list.items] : [];

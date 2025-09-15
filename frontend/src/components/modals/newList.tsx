@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useModal, useTodoLists } from "/src/context";
 
 import { apiFetch } from "/src/utils";
-import { refInput, todoListState } from "/src/types";
+import { refInput } from "/src/types";
 
 
 export function NewList() {
@@ -26,7 +26,7 @@ export function NewList() {
             }
 
             if (resp.ok) {
-                setTodoLists((prev: todoListState) => ([
+                setTodoLists((prev) => ([
                     ...prev,
                     data
                 ]));

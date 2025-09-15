@@ -4,7 +4,7 @@ import { Item } from "./item";
 import { DragList } from "/src/components";
 import { useTodoLists } from "/src/context";
 import { apiFetch } from "/src/utils";
-import { dragListProps, stringState, todoListState, todoListType } from "/src/types";
+import { dragListProps, stringState, todoListType } from "/src/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
@@ -12,7 +12,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     const [editing, setEditing] = useState<stringState>(null);
 
     const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
-        setTodoLists((prev: todoListState) => {
+        setTodoLists((prev) => {
             return prev.map(list =>
                 list.id === todoList.id
                     ? { ...list, items: newLists }
@@ -32,7 +32,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
             let [resp, data] = result;
 
             if (resp.ok && data.items) {
-                setTodoLists((prev: todoListState) => {
+                setTodoLists((prev) => {
                     return prev.map(list =>
                         list.id === todoList.id
                             ? { ...list, items: data.items }

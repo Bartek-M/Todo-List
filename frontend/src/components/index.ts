@@ -12,6 +12,7 @@ export {
 } from "./element/"
 
 export { 
+    Date,
     Select, 
     SlidingInput 
 } from "./input/"
