@@ -1,7 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { Dispatch, SetStateAction, useState, useContext, useEffect } from "react";
 
 import { useUser } from "./userContext";
-import { activeContext, activeState, childProps } from "/src/types";
+import { childProps } from "/src/types";
+
+
+type activeContext = [activeState, Dispatch<SetStateAction<activeState>>] | null;
+type activeState = {
+    id: string;
+    index: number;
+    opened: boolean;
+}
 
 
 const ActiveContext = React.createContext<activeContext>(null);

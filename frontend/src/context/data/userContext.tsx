@@ -1,9 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { Dispatch, SetStateAction, useState, useContext, useEffect } from "react";
 
 import { Loading } from "/src/components";
 import { defaultLists } from "/src/defaults";
 import { apiFetch, mergeLists } from "/src/utils";
-import { childProps, userContext, userState } from "/src/types";
+import { childProps, userType } from "/src/types";
+
+
+type userContext = [userType, Dispatch<SetStateAction<userType>>] | null;
+type userState = userType | null | false;
 
 
 const UserContext = React.createContext<userContext>(null);
