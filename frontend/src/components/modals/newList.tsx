@@ -1,42 +1,43 @@
 import { useRef } from "react";
-import { useTodoLists } from "/src/context";
+import { useModal, useTodoLists } from "/src/context";
 
 import { apiFetch } from "/src/utils";
 import { refInput, todoListState } from "/src/types";
 
 
-function createList(name: refInput, setTodoLists: any) {
-    let valName = name?.value;
-    if (!valName) return;
-
-    apiFetch("list/create/", "POST", {
-        name: valName
-    }).then((result) => {
-        if (!result) return;
-        let [resp, data] = result;
-
-        if (data.errors) {
-            return;
-        }
-
-        if (resp.ok) {
-            setTodoLists((prev: todoListState) => ([
-                ...prev,
-                data
-            ]));
-        }
-    });
-
-    const modal = bootstrap.Modal.getInstance(document.getElementById("modal"));
-    modal.hide();
-}
-
 export function NewList() {
-    const [_, setTodoLists] = useTodoLists()!;
-    const listName = useRef(null);
+    const [, setTodoLists] = useTodoLists()!;
+    const [, setModal] = useModal()!;
+
+    const listName = useRef<refInput>(null);
+
+    const createList = () => {
+        let valName = listName.current?.value;
+        if (!valName) return;
+
+        apiFetch("list/create/", "POST", {
+            name: valName
+        }).then((result) => {
+            if (!result) return;
+            let [resp, data] = result;
+
+            if (data.errors) {
+                return;
+            }
+
+            if (resp.ok) {
+                setTodoLists((prev: todoListState) => ([
+                    ...prev,
+                    data
+                ]));
+            }
+        });
+
+        setModal(null);
+    }
 
     return (
-        <form onSubmit={(e) => { e.preventDefault(); createList(listName.current, setTodoLists); }}>
+        <form onSubmit={(e) => { e.preventDefault(); createList(); }}>
             <div className="modal-header border-0">
                 <h1 className="modal-title fs-5">New list</h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

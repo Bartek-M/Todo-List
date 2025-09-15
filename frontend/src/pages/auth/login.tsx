@@ -6,41 +6,41 @@ import { apiFetch } from "/src/utils/";
 import { refInput } from "/src/types";
 
 
-async function submitLogin(login: refInput, passw: refInput) {
-    let valLogin = login?.value;
-    let valPassw = passw?.value;
-    if (!valLogin || !valPassw) return;
-
-    apiFetch(`auth/login/`, "POST", {
-        login_data: valLogin,
-        password: valPassw
-    }).then((result) => {
-        if (!result) return; // something went wrong?
-        let [resp, data] = result;
-
-        if (data.errors) {
-            return;
-        }
-
-        if (resp.ok) {
-            window.location.replace("/")
-            console.log("logged in");
-        }
-    });
-}
-
 export function Login() {
-    const login = useRef(null);
-    const passw = useRef(null);
+    const login = useRef<refInput>(null);
+    const passw = useRef<refInput>(null);
     const submitBtn = useRef(null);
 
     const location = useLocation();
     console.log(location.state?.logout);
 
+    async function submitLogin() {
+        let valLogin = login.current?.value;
+        let valPassw = passw.current?.value;
+        if (!valLogin || !valPassw) return;
+
+        apiFetch(`auth/login/`, "POST", {
+            login_data: valLogin,
+            password: valPassw
+        }).then((result) => {
+            if (!result) return; // something went wrong?
+            let [resp, data] = result;
+
+            if (data.errors) {
+                return;
+            }
+
+            if (resp.ok) {
+                window.location.replace("/");
+                console.log("logged in");
+            }
+        });
+    }
+
     return (
         <NavBase>
             <div className="card w-100 mt-auto" style={{ maxWidth: "450px" }}>
-                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(login.current, passw.current); }}>
+                <form className="card-body" onSubmit={(e) => { e.preventDefault(); submitLogin(); }}>
                     <h2 className="text-center mb-3">Login to Todo-List</h2>
                     <div className="mb-3">
                         <label className="form-label">Email / Username</label>

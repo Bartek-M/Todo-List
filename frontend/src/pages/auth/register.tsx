@@ -5,32 +5,6 @@ import { NavBase } from "/src/components/";
 import { apiFetch } from "/src/utils";
 import { refInput } from "/src/types";
 
-async function submitRegister(username: refInput, email: refInput, passw: refInput, navigator: any) {
-    if (!username || !email || !passw) return;
-
-    let valUsername = username.value;
-    let valEmail = email.value;
-    let valPassw = passw.value;
-    if (!valUsername || !valEmail || !valPassw) return;
-
-    apiFetch("auth/register/", "POST", {
-        username: valUsername,
-        email: valEmail,
-        password: valPassw
-    }).then((result) => {
-        if (!result) return;
-        let [resp, data] = result;
-
-        if (data.errors) {
-            return;
-        }
-
-        if (resp.ok) {
-            navigator("/login");
-            console.log("registered");
-        }
-    });
-}
 
 export function Register() {
     const username = useRef(null);
@@ -39,6 +13,34 @@ export function Register() {
     const submitBtn = useRef(null);
 
     const navigator = useNavigate();
+
+    async function submitRegister(username: refInput, email: refInput, passw: refInput, navigator: any) {
+        if (!username || !email || !passw) return;
+
+        let valUsername = username.value;
+        let valEmail = email.value;
+        let valPassw = passw.value;
+        if (!valUsername || !valEmail || !valPassw) return;
+
+        apiFetch("auth/register/", "POST", {
+            username: valUsername,
+            email: valEmail,
+            password: valPassw
+        }).then((result) => {
+            if (!result) return;
+            let [resp, data] = result;
+
+            if (data.errors) {
+                return;
+            }
+
+            if (resp.ok) {
+                navigator("/login");
+                console.log("registered");
+            }
+        });
+    }
+
 
     return (
         <NavBase>

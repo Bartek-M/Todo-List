@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { SlidingInput } from "/src/components";
 
 
-export function DatePick({ icon }) {
+export function DatePick({ icon }: { icon: string[]; }) {
     const inputRef = useRef(null);
 
     return (
