@@ -1,5 +1,7 @@
 export function GeneralTab() {
     return (
-        <p>General</p>
+        <div>
+            <p>General</p>
+        </div>
     );
 }

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Select } from "/src/components";
+import { DateInput, Select } from "/src/components";
 
 export function AccountTab() {
     const inputRef = useRef(null);
@@ -19,6 +19,7 @@ export function AccountTab() {
                 inputRef={inputRef}
                 clickEvent={(id) => { console.log(id); }}
             />
+            <DateInput />
         </div>
     );
 }

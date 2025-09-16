@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Date, SlidingInput } from "/src/components";
+import { DateInput, SlidingInput } from "/src/components";
 
 
 export function DatePick({ icon }: { icon: string[]; }) {
@@ -10,7 +10,7 @@ export function DatePick({ icon }: { icon: string[]; }) {
         <SlidingInput
             iconPaths={icon}
             inputElement={
-               <Date />
+               <DateInput inputRef={inputRef} />
             }
             inputRef={inputRef}
         />

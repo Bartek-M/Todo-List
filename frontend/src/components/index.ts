@@ -12,7 +12,7 @@ export {
 } from "./element/"
 
 export { 
-    Date,
+    DateInput,
     Select, 
     SlidingInput 
 } from "./input/"

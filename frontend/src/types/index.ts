@@ -23,4 +23,7 @@ export type {
     itemType 
 } from "./user";
 
-export type { refInput } from "./reference";
+export type { 
+    refInput,
+    refButton
+} from "./reference";
