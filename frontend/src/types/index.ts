@@ -13,6 +13,7 @@ export type {
     authRouteProps,
     slidingInputProps,
     selectProps,
+    dateProps,
     linkProps
 } from "./components";
 

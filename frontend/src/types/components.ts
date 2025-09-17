@@ -60,6 +60,12 @@ export type selectProps = {
     sliding?: boolean
 }
 
+export type dateProps = {
+    title: string;
+    inputRef: any;
+    changeEvent: (time: string) => void
+}
+
 export type linkProps = {
     children: ReactNode;
     to: string;

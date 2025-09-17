@@ -1,46 +1,38 @@
 import { useRef, useState } from "react";
 
-import { refInput, refButton, stringState } from "/src/types";
+import { refInput, refButton, stringState, dateProps } from "/src/types";
 import { transitionTime } from "/src/defaults";
 
 
-export function DateInput({ opener = "Select Date", inputRef = useRef<refButton>(null) }) {
-    const hiddenInputRef = useRef<refInput>(null);
+export function DateInput({ title = "Select Date", inputRef = useRef<refButton>(null), changeEvent }: dateProps) {
+    const dateInput = useRef<refInput>(null);
     const [selectedDate, setSelectedDate] = useState<stringState>(null);
 
-    const openDatePicker = () => {
-        let currentInput = hiddenInputRef.current;
+    const handleOpen = (e: React.MouseEvent) => {
+        let currentInput = dateInput.current;
         if (!currentInput) return;
 
         setTimeout(() => {
             currentInput.showPicker ? currentInput.showPicker() : currentInput.click();
-        }, transitionTime);
+        }, !e.isTrusted ? transitionTime : 0);
     };
 
     const handleChange = () => {
-        let currentInput = hiddenInputRef.current;
+        let currentInput = dateInput.current;
         if (!currentInput) return;
-
+        
+        changeEvent(currentInput.value)
         setSelectedDate(currentInput.value);
     };
 
     return (
         <div className="position-relative">
-            <button className="btn border" ref={inputRef} onClick={openDatePicker}>
+            <button className="btn border" ref={inputRef} onClick={handleOpen}>
                 {selectedDate
                     ? new Date(selectedDate).toLocaleDateString()
-                    : opener}
+                    : title}
             </button>
-            <input
-                type="date"
-                ref={hiddenInputRef}
-                onChange={handleChange}
-                className="position-absolute"
-                style={{
-                    inset: "0",
-                    visibility: "hidden",
-                }}
-            />
+            <input type="date" ref={dateInput} onChange={handleChange} className="position-absolute invisible" style={{ inset: "0" }} />
         </div>
     );
 }
