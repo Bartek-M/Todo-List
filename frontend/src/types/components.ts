@@ -49,7 +49,7 @@ export type slidingInputProps = {
 }
 
 export type selectProps = {
-    title: string;
+    title?: string;
     elements: {
         id: string;
         name: string;
@@ -61,9 +61,17 @@ export type selectProps = {
 }
 
 export type dateProps = {
-    title: string;
+    title?: string;
+    name: string;
     inputRef: any;
     changeEvent: (time: string) => void
+}
+
+export type datePickProps = {
+    title?: string;
+    name: string;
+    icon: string[];
+    changeEvent: (time: string) => void;
 }
 
 export type linkProps = {

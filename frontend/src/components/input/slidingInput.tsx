@@ -42,7 +42,7 @@ export function SlidingInput({ iconPaths, inputElement, inputRef }: slidingInput
     return (
         <div className={`sliding-input ${open ? "open" : ""}`} ref={wrapperRef}>
             <button className="btn border-0" onClick={() => setOpen((prev) => !prev)}>
-                <SVG paths={iconPaths} fill={open ? "#000" : defaultIconFill} />
+                <SVG paths={iconPaths} fill={defaultIconFill} />
             </button>
             {inputElement}
         </div>

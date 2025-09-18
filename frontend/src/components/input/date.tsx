@@ -4,7 +4,7 @@ import { refInput, refButton, stringState, dateProps } from "/src/types";
 import { transitionTime } from "/src/defaults";
 
 
-export function DateInput({ title = "Select Date", inputRef = useRef<refButton>(null), changeEvent }: dateProps) {
+export function DateInput({ title = "Select Date", name, inputRef = useRef<refButton>(null), changeEvent }: dateProps) {
     const dateInput = useRef<refInput>(null);
     const [selectedDate, setSelectedDate] = useState<stringState>(null);
 
@@ -29,10 +29,10 @@ export function DateInput({ title = "Select Date", inputRef = useRef<refButton>(
         <div className="position-relative">
             <button className="btn border" ref={inputRef} onClick={handleOpen}>
                 {selectedDate
-                    ? new Date(selectedDate).toLocaleDateString()
+                    ? new Date(selectedDate).toLocaleDateString(navigator.language === "en" ? "en-GB" : navigator.appCodeName)
                     : title}
             </button>
-            <input type="date" ref={dateInput} onChange={handleChange} className="position-absolute invisible" style={{ inset: "0" }} />
+            <input type="date" name={name} ref={dateInput} onChange={handleChange} className="position-absolute invisible" style={{ inset: "0" }} />
         </div>
     );
 }

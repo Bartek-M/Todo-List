@@ -14,6 +14,7 @@ export type {
     slidingInputProps,
     selectProps,
     dateProps,
+    datePickProps,
     linkProps
 } from "./components";
 

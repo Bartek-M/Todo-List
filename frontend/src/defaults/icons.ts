@@ -8,4 +8,4 @@ export const defaultIcons = {
     ]
 }
 
-export const defaultIconFill = "#abaeb1"
+export const defaultIconFill = "#929497"

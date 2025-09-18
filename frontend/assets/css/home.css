@@ -120,8 +120,11 @@
     margin: 0 0.5rem;
 }
 
-.sliding-input.open > :last-child {
+.sliding-input.open > :last-child, .sliding-input.active > :last-child {
     max-width: 200px;
-    padding: 0 0.75rem;
-    color: var(--bs-body-color);
+    padding: 0 0.5rem 0 0.25rem;
+}
+
+.sliding-input.open button:hover {
+    opacity: 1!important;
 }
