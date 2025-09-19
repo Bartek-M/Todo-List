@@ -24,7 +24,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     };
 
     useEffect(() => {
-        setEditing("2");
+        setEditing("2"); // TODO: delete this
         if (todoList.items) return;
 
         apiFetch(`list/${todoList.id}/items/`, "GET").then((result) => {

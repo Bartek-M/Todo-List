@@ -29,8 +29,8 @@ export function SlidingInput({ iconPaths, inputElement, inputRef }: slidingInput
         };
 
         if (open) {
-            document.addEventListener("mousedown", handleClickOutside);
-            return () => document.removeEventListener("mousedown", handleClickOutside);
+            document.addEventListener("click", handleClickOutside);
+            return () => document.removeEventListener("click", handleClickOutside);
         }
     }, [open]);
 

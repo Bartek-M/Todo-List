@@ -34,7 +34,7 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             };
 
             for (const [key, value] of Object.entries(editedItem)) {
-                console.log(key, value)
+                console.log(key, value);
             }
 
             if (!editedItem.text) {
@@ -45,7 +45,6 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
                             : list
                     ));
             }
-
         };
     }, [editingCurrent]);
 
@@ -54,18 +53,14 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             className={`checklist-item ${dragOverlay ? "dragged-item" : ""} ${editingCurrent ? "editing shadow-sm" : ""}`}
             onClick={(e) => {
                 let element = (e.target as HTMLElement);
-                if (!element.matches("li") && !element.matches("div:not([contenteditable])")) return;
-
-                setEditing(editingCurrent ? null : item.id);
+                if (!editingCurrent && !element.matches('input[type="checkbox"]')) return setEditing(item.id);
+                if (editingCurrent && element.matches("li, [data-close]")) return setEditing(null);
             }}
             {...dragProps}
         >
             <div className="hstack gap-2">
                 <input className="form-check-input m-0" type="checkbox" id={`check-${item.id}-${dragOverlay}`} defaultChecked={item.ticked} />
-                {editingCurrent
-                    ? <input className="border-0 outline-0 p-0 text-break" defaultValue={item.text} placeholder="Title" type="text" name="title" ref={titleRef} />
-                    : <ItemTitle item={item} />
-                }
+                <ItemTitle item={item} isEdited={editingCurrent} titleRef={titleRef} />
             </div>
             {editingCurrent && (
                 <>

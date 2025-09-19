@@ -19,7 +19,7 @@ export function ItemNotes({ item, notesRef }: { item: itemType, notesRef: any })
                 data-placeholder="Notes"
                 contentEditable
                 suppressContentEditableWarning
-                style={{ maxHeight: "calc(var(--bs-body-line-height) * 6rem)" }}
+                style={{ maxHeight: "calc(var(--bs-body-line-height) * 10rem)" }}
                 ref={notesRef}
                 onInput={handleInput}
             >
