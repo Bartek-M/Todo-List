@@ -20,6 +20,6 @@ export function Options() {
                     <Link className="dropdown-item" to="/logout">Sign Out</Link>
                 </ul>
             </div>
-        </div>
+        </div>  
     );
 } 

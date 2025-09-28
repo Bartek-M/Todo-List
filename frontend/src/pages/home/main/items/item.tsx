@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useTodoLists } from "/src/context";
 
-import { ItemTitle, ItemNotes, ItemOptions } from ".";
+import { ItemTitle, ItemOptions } from ".";
+import { TextInput } from "/src/components";
 import { dragItemProps } from "/src/types";
 import { getDragProps } from "/src/utils";
 
@@ -29,7 +30,7 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
 
         return () => {
             const editedItem = {
-                text: titleInput?.value ?? "",
+                text: titleInput?.innerText ?? "",
                 notes: notesInput?.innerText ?? ""
             };
 
@@ -58,13 +59,20 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             }}
             {...dragProps}
         >
-            <div className="hstack gap-2">
-                <input className="form-check-input m-0" type="checkbox" id={`check-${item.id}-${dragOverlay}`} defaultChecked={item.ticked} />
+            <div className="d-flex align-items-start gap-2">
+                <input className="form-check-input" type="checkbox" id={`check-${item.id}-${dragOverlay}`} defaultChecked={item.ticked} />
                 <ItemTitle item={item} isEdited={editingCurrent} titleRef={titleRef} />
             </div>
             {editingCurrent && (
                 <>
-                    <ItemNotes item={item} notesRef={notesRef} />
+                    <TextInput 
+                        value={item.notes}
+                        placeholder="Notes"
+                        innerRef={notesRef}
+                        styles={{ color: "var(--bs-secondary)", margin: "0 0.5rem 1rem 1.5rem" }} 
+                        multiline={true}
+                        charLimit={255}
+                    />
                     <ItemOptions item={item} />
                 </>
             )}

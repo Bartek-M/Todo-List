@@ -91,7 +91,7 @@ svg {
     border-bottom-color: transparent!important;
 }
 
-.list-group button {
+.list-group > button {
     padding: 0.25rem 0.5rem!important;
 }
 

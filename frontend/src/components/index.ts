@@ -14,6 +14,7 @@ export {
 export { 
     DateInput,
     Select, 
+    TextInput,
     SlidingInput 
 } from "./input/"
 
