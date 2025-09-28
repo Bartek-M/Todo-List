@@ -31,7 +31,7 @@ export function Lists() {
     };
 
     return (
-        <div className="list-group py-4 px-4" style={{ gap: "1px" }}>
+        <div className="list-group py-4 px-3" style={{ gap: "1px" }}>
             <DragList Element={ListItem} title="sidebar" list={todoLists} dragEnd={handleDragEnd} />
         </div>
     );
