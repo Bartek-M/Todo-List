@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 
 import { SVG } from "..";
-import { defaultIconFill } from "/src/defaults";
-import { slidingInputProps } from "/src/types";
+import { defaultIconFill } from "@/defaults";
+import { slidingInputProps } from "@/types";
 
 /*
 <SlidingInput 

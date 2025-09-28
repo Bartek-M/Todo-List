@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-import { useUser } from "/src/context";
-import { authRouteProps } from "/src/types";
+import { useUser } from "@/context";
+import { authRouteProps } from "@/types";
 
 
 export function AuthRoute({ mode, redirect, fallback }: authRouteProps) {

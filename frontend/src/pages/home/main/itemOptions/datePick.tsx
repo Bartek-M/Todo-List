@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import { DateInput, SlidingInput } from "/src/components";
-import { datePickProps } from "/src/types";
+import { DateInput, SlidingInput } from "@/components";
+import { datePickProps } from "@/types";
 
 
 export function DatePick({ title, name, icon, changeEvent }: datePickProps) {
@@ -11,7 +11,7 @@ export function DatePick({ title, name, icon, changeEvent }: datePickProps) {
         <SlidingInput
             iconPaths={icon}
             inputElement={
-               <DateInput title={title} name={name} inputRef={inputRef} changeEvent={changeEvent} />
+                <DateInput title={title} name={name} inputRef={inputRef} changeEvent={changeEvent} />
             }
             inputRef={inputRef}
         />

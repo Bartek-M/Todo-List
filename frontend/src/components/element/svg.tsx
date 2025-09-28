@@ -1,4 +1,4 @@
-import { svgProps } from "/src/types";
+import { svgProps } from "@/types";
 
 
 export function SVG({ paths, fill = "currentColor", fillRule = "evenodd", width = "1em", height = "1em" }: svgProps) {

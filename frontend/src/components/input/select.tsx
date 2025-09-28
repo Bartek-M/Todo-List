@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
-import { selectProps, boolState, refInput } from "/src/types";
-import { transitionTime, slidingIconWidth } from "/src/defaults";
+import { selectProps, boolState, refInput } from "@/types";
+import { transitionTime, slidingIconWidth } from "@/defaults";
 
 
 export function Select({ title, elements, inputRef = useRef<refInput>(null), clickEvent, sliding }: selectProps) {

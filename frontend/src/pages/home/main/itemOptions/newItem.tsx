@@ -1,9 +1,9 @@
-import { useTodoLists } from "/src/context";
-import { SVG } from "/src/components";
-import { todoListType } from "/src/types";
+import { useTodoLists } from "@/context";
+import { SVG } from "@/components";
+import { todoListType } from "@/types";
 
 
-export function NewItemButton({ todoList }: { todoList: todoListType }) {
+export function NewItemButton({ todoList }: { todoList: todoListType; }) {
     const [_, setTodoLists] = useTodoLists()!;
 
     return (

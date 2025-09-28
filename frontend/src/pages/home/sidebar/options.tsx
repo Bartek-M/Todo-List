@@ -1,5 +1,5 @@
-import { SVG, Link } from "/src/components";
-import { useModal } from "/src/context";
+import { SVG, Link } from "@/components";
+import { useModal } from "@/context";
 
 
 export function Options() {
@@ -20,6 +20,6 @@ export function Options() {
                     <Link className="dropdown-item" to="/logout">Sign Out</Link>
                 </ul>
             </div>
-        </div>  
+        </div>
     );
 } 

@@ -1,4 +1,4 @@
-import { NavBase } from "/src/components";
+import { NavBase } from "@/components";
 
 
 export function Pricing() {

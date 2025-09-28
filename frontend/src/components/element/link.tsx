@@ -1,7 +1,7 @@
 import { startTransition } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { linkProps } from "/src/types";
+import { linkProps } from "@/types";
 
 
 export function Link({ children, to, className = "" }: linkProps) {

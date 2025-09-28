@@ -1,9 +1,9 @@
 import React, { useState, useContext, Dispatch, SetStateAction } from "react";
 import { createPortal } from "react-dom";
 
-import { childProps } from "/src/types";
-import { ModalBase } from "/src/components";
-import { NewList } from "/src/components/modals";
+import { childProps } from "@/types";
+import { ModalBase } from "@/components";
+import { NewList } from "@/components/modals";
 
 
 export const MODAL_REGISTRY = {

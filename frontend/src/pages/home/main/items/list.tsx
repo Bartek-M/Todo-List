@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { Item } from "./item";
-import { DragList } from "/src/components";
-import { useTodoLists } from "/src/context";
-import { apiFetch } from "/src/utils";
-import { dragListProps, stringState, todoListType } from "/src/types";
+import { DragList } from "@/components";
+import { useTodoLists } from "@/context";
+import { apiFetch } from "@/utils";
+import { dragListProps, stringState, todoListType } from "@/types";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
@@ -48,7 +48,7 @@ export function ItemsList({ todoList }: { todoList: todoListType; }) {
     );
 
     return (
-        <ul className="list-group" key={ todoList.id }>
+        <ul className="list-group" key={todoList.id}>
             <DragList Element={Item} title="items" list={todoList.items} dragEnd={handleDragEnd} listProps={{ editing: editing, setEditing: setEditing }} />
         </ul>
     );

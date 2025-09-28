@@ -1,5 +1,5 @@
 import { AccountTab, GeneralTab, ThemeTab, AboutTab } from "./tabs";
-import { useDynamicStyles } from "/src/utils";
+import { useDynamicStyles } from "@/utils";
 
 export function Settings() {
     if (!useDynamicStyles("/css/home.css")) return;

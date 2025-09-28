@@ -1,5 +1,5 @@
-import { NavBase } from "/src/components";
-import { useDynamicStyles } from "/src/utils";
+import { NavBase } from "@/components";
+import { useDynamicStyles } from "@/utils";
 
 export function Welcome() {
     if (!useDynamicStyles("/css/welcome.css")) return;

@@ -1,9 +1,9 @@
-import { useActive, useTodoLists } from "/src/context";
+import { useActive, useTodoLists } from "@/context";
 
-import { DragList } from "/src/components";
+import { DragList } from "@/components";
 import { ListItem } from "./listItem";
-import { dragListProps } from "/src/types";
-import { apiFetch } from "/src/utils";
+import { dragListProps } from "@/types";
+import { apiFetch } from "@/utils";
 
 
 export function Lists() {

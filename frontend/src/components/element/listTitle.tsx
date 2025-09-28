@@ -1,6 +1,6 @@
-import { SVG } from "/src/components";
-import { defaultIcons, defaultIconFill } from "/src/defaults";
-import { todoListType } from "/src/types";
+import { SVG } from "@/components";
+import { defaultIcons, defaultIconFill } from "@/defaults";
+import { todoListType } from "@/types";
 
 
 export function ListTitle({ todoList }: { todoList: todoListType; }) {

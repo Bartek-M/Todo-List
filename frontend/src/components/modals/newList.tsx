@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import { useModal, useTodoLists } from "/src/context";
+import { useModal, useTodoLists } from "@/context";
 
-import { apiFetch } from "/src/utils";
-import { refInput } from "/src/types";
+import { apiFetch } from "@/utils";
+import { refInput } from "@/types";
 
 
 export function NewList() {
@@ -34,7 +34,7 @@ export function NewList() {
         });
 
         setModal(null);
-    }
+    };
 
     return (
         <form onSubmit={(e) => { e.preventDefault(); createList(); }}>

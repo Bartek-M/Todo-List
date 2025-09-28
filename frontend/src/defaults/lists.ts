@@ -1,4 +1,4 @@
-import { defaultListType } from "/src/types";
+import { defaultListType } from "@/types";
 import { defaultIcons } from ".";
 
 

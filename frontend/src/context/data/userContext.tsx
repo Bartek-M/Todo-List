@@ -1,9 +1,9 @@
 import React, { Dispatch, SetStateAction, useState, useContext, useEffect } from "react";
 
-import { Loading } from "/src/components";
-import { defaultLists } from "/src/defaults";
-import { apiFetch, mergeLists } from "/src/utils";
-import { childProps, userType } from "/src/types";
+import { Loading } from "@/components";
+import { defaultLists } from "@/defaults";
+import { apiFetch, mergeLists } from "@/utils";
+import { childProps, userType } from "@/types";
 
 
 type userContext = [userType, Dispatch<SetStateAction<userType>>] | null;
@@ -38,7 +38,7 @@ export function UserProvider({ children }: childProps) {
 
     return (
         <UserContext.Provider value={[user, setUser] as userContext}>
-            {children} 
+            {children}
         </UserContext.Provider>
     );
 }

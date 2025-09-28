@@ -1,5 +1,5 @@
-import { useDynamicStyles } from "/src/utils/";
-import { ActiveProvider, ModalProvider, TodoListProvider } from "/src/context";
+import { useDynamicStyles } from "@/utils/";
+import { ActiveProvider, ModalProvider, TodoListProvider } from "@/context";
 
 import { Main } from "./main";
 import { Sidebar } from "./sidebar";

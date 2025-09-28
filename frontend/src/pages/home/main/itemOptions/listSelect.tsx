@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
-import { SlidingInput, Select } from "/src/components";
-import { useTodoLists } from "/src/context";
+import { SlidingInput, Select } from "@/components";
+import { useTodoLists } from "@/context";
 
 
 export function ListSelect({ listId }: { listId: string; }) {

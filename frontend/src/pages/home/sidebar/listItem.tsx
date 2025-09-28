@@ -1,8 +1,8 @@
-import { useActive } from "/src/context";
+import { useActive } from "@/context";
 
-import { ListTitle } from "/src/components/";
-import { dragItemProps } from "/src/types/";
-import { getDragProps } from "/src/utils";
+import { ListTitle } from "@/components/";
+import { dragItemProps } from "@/types/";
+import { getDragProps } from "@/utils";
 
 
 export function ListItem({ item, index, dragOverlay = false }: dragItemProps) {

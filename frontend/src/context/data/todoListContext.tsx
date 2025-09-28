@@ -1,11 +1,11 @@
 import React, { Dispatch, SetStateAction, useState, useContext, useEffect } from "react";
 
 import { useUser } from "../";
-import { todoListType, childProps } from "/src/types";
+import { todoListType, childProps } from "@/types";
 
 
 type todoListContext = [todoListType[], Dispatch<SetStateAction<todoListType[]>>] | null;
-type todoListState = todoListType[]
+type todoListState = todoListType[];
 
 
 const TodoListContext = React.createContext<todoListContext>(null);

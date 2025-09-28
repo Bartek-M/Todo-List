@@ -1,8 +1,8 @@
-import { useActive, useTodoLists } from "/src/context";
+import { useActive, useTodoLists } from "@/context";
 
 import { NewItemButton, ItemsList } from ".";
-import { SVG, ListTitle } from "/src/components";
-import { defaultIconFill } from "/src/defaults";
+import { SVG, ListTitle } from "@/components";
+import { defaultIconFill } from "@/defaults";
 
 
 export function Main() {

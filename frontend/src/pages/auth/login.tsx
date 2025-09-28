@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-import { NavBase } from "/src/components/";
-import { apiFetch } from "/src/utils/";
-import { refInput } from "/src/types";
+import { NavBase } from "@/components/";
+import { apiFetch } from "@/utils/";
+import { refInput } from "@/types";
 
 
 export function Login() {

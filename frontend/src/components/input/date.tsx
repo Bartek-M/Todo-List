@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
-import { refInput, refButton, stringState, dateProps } from "/src/types";
-import { transitionTime } from "/src/defaults";
+import { refInput, refButton, stringState, dateProps } from "@/types";
+import { transitionTime } from "@/defaults";
 
 
 export function DateInput({ title = "Select Date", name, inputRef = useRef<refButton>(null), changeEvent }: dateProps) {
@@ -20,8 +20,8 @@ export function DateInput({ title = "Select Date", name, inputRef = useRef<refBu
     const handleChange = () => {
         let currentInput = dateInput.current;
         if (!currentInput) return;
-        
-        changeEvent(currentInput.value)
+
+        changeEvent(currentInput.value);
         setSelectedDate(currentInput.value);
     };
 

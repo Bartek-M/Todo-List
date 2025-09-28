@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DndContext, DragEndEvent, DragOverlay, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 
-import { dragListProps, updatedItemsType } from "/src/types";
+import { dragListProps, updatedItemsType } from "@/types";
 
 
 export function DragList({ Element, title, list, dragEnd, listProps = {} }: dragListProps) {
@@ -28,7 +28,7 @@ export function DragList({ Element, title, list, dragEnd, listProps = {} }: drag
 
         if (!Object.keys(updatedItems).length) return;
         dragEnd(newLists, updatedItems);
-    }
+    };
 
 
     return (

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import { Loading } from "/src/components";
-import { apiFetch } from "/src/utils";
+import { Loading } from "@/components";
+import { apiFetch } from "@/utils";
 
 export function Logout() {
 
@@ -11,7 +11,7 @@ export function Logout() {
             let [resp, _] = result;
 
             if (resp.ok) {
-                window.location.replace("/login")
+                window.location.replace("/login");
             }
         });
     }, []);

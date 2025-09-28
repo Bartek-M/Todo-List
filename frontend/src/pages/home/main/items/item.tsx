@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useTodoLists } from "/src/context";
+import { useTodoLists } from "@/context";
 
 import { ItemTitle, ItemOptions } from ".";
-import { TextInput } from "/src/components";
-import { dragItemProps } from "/src/types";
-import { getDragProps } from "/src/utils";
+import { TextInput } from "@/components";
+import { dragItemProps } from "@/types";
+import { getDragProps } from "@/utils";
 
 
 export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProps) {
@@ -65,11 +65,11 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
             </div>
             {editingCurrent && (
                 <>
-                    <TextInput 
+                    <TextInput
                         value={item.notes}
                         placeholder="Notes"
                         innerRef={notesRef}
-                        styles={{ color: "var(--bs-secondary)", margin: "0 0.5rem 1rem 1.5rem" }} 
+                        styles={{ color: "var(--bs-secondary)", margin: "0 0.5rem 1rem 1.5rem" }}
                         multiline={true}
                         charLimit={255}
                     />
