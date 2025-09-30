@@ -2,8 +2,16 @@ import { useState } from "react";
 import { DndContext, DragEndEvent, DragOverlay, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 
-import { dragListProps, updatedItemsType } from "@/types";
 
+type updatedItemsType = { [id: string]: number; };
+
+interface dragListProps {
+    Element: any;
+    title: string;
+    list: any[];
+    dragEnd: (newList: any[], updatedItems: updatedItemsType) => void;
+    listProps?: any;
+}
 
 export function DragList({ Element, title, list, dragEnd, listProps = {} }: dragListProps) {
     const [activeId, setActiveId] = useState<string | null>(null);

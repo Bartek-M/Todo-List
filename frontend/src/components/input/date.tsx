@@ -1,10 +1,22 @@
 import { useRef, useState } from "react";
 
-import { refInput, refButton, stringState, dateProps } from "@/types";
+import { refInput, refButton, stringState } from "@/types";
 import { transitionTime } from "@/defaults";
 
 
-export function DateInput({ title = "Select Date", name, inputRef = useRef<refButton>(null), changeEvent }: dateProps) {
+interface dateProps {
+    title?: string;
+    name: string;
+    inputRef: any;
+    changeEvent: (time: string) => void;
+}
+
+export function DateInput({
+    title = "Select Date",
+    name,
+    inputRef = useRef<refButton>(null),
+    changeEvent
+}: dateProps) {
     const dateInput = useRef<refInput>(null);
     const [selectedDate, setSelectedDate] = useState<stringState>(null);
 

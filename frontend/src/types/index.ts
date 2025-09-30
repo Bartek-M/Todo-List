@@ -4,18 +4,8 @@ export type {
 } from "./state";
 
 export type { 
-    svgProps, 
-    dragProps,
     dragItemProps, 
-    dragListProps, 
-    updatedItemsType, 
     childProps,
-    authRouteProps,
-    slidingInputProps,
-    selectProps,
-    dateProps,
-    datePickProps,
-    linkProps
 } from "./components";
 
 export type { 

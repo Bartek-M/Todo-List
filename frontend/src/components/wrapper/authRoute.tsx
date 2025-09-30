@@ -1,8 +1,13 @@
 import { Outlet } from "react-router-dom";
 
 import { useUser } from "@/context";
-import { authRouteProps } from "@/types";
 
+
+interface authRouteProps {
+    mode: "protected" | "guest",
+    redirect: string;
+    fallback: React.ReactNode;
+}
 
 export function AuthRoute({ mode, redirect, fallback }: authRouteProps) {
     const [user,] = useUser()!;

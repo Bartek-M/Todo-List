@@ -1,7 +1,11 @@
 import { useSortable } from "@dnd-kit/sortable";
 
-import { dragProps } from "@/types";
 
+interface dragProps {
+    id: string;
+    isDraggable?: boolean;
+    dragOverlay?: boolean;
+}
 
 export function getDragProps({ id, isDraggable = true, dragOverlay = false }: dragProps) {
     const { listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: id });

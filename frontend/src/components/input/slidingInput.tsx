@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 
 import { SVG } from "..";
 import { defaultIconFill } from "@/defaults";
-import { slidingInputProps } from "@/types";
 
 /*
 <SlidingInput 
@@ -16,6 +15,13 @@ import { slidingInputProps } from "@/types";
     inputRef={}
 />
 */
+
+interface slidingInputProps {
+    iconPaths: string[];
+    inputElement: React.ReactNode;
+    inputRef: any;
+    wrapperRef?: any;
+}
 
 export function SlidingInput({ iconPaths, inputElement, inputRef }: slidingInputProps) {
     const [open, setOpen] = useState(false);

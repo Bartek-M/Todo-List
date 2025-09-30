@@ -1,10 +1,28 @@
 import { useEffect, useState, useRef } from "react";
 
-import { selectProps, boolState, refInput } from "@/types";
+import { boolState, refInput } from "@/types";
 import { transitionTime, slidingIconWidth } from "@/defaults";
 
 
-export function Select({ title, elements, inputRef = useRef<refInput>(null), clickEvent, sliding }: selectProps) {
+interface selectProps {
+    title?: string;
+    elements: {
+        id: string;
+        name: string;
+        active?: boolean;
+    }[];
+    inputRef: any;
+    clickEvent: (id: string) => void;
+    sliding?: boolean;
+};
+
+export function Select({
+    title,
+    elements,
+    inputRef = useRef<refInput>(null),
+    clickEvent,
+    sliding
+}: selectProps) {
     const [opened, setOpened] = useState<boolState>(false);
     const selectRef = useRef<any>(null);
 
