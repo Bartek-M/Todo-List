@@ -24,21 +24,22 @@ export function TextInput({
 
     const handleInput = () => {
         const text = innerRef.current.innerText || "";
+        if (text === "\n") innerRef.current.innerHTML = "";
         setCharCount(text.length);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-        // if (charCount >= charLimit) e.preventDefault();
-
-        if (multiline) return;
-        if (e.key === "Enter") e.preventDefault();
-    }
+        if (!multiline && e.key === "Enter") e.preventDefault();
+    };
 
     const handleOnPaste = (e: React.ClipboardEvent) => {
         e.preventDefault();
-        const pasteContent = e.clipboardData.getData("text/plain")
-        innerRef.current.innerText += pasteContent
-    }
+
+        let pasteContent = e.clipboardData.getData("text/plain");
+        innerRef.current.innerText += pasteContent;
+
+        handleInput();
+    };
 
     return (
         <div style={styles}>
@@ -47,7 +48,7 @@ export function TextInput({
                 data-placeholder={placeholder}
                 contentEditable
                 suppressContentEditableWarning
-                style={ maxLines !== -1 ? { maxHeight: `calc(var(--bs-body-line-height) * ${maxLines}em)` } : {}}
+                style={maxLines !== -1 ? { maxHeight: `calc(var(--bs-body-line-height) * ${maxLines}em)` } : {}}
                 ref={innerRef}
                 onInput={handleInput}
                 onKeyDown={handleKeyDown}

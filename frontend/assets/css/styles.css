@@ -45,7 +45,7 @@ a:hover:not(.hidden-link), button:hover {
     opacity: 0.75;
 }
 
-[contenteditable][data-placeholder]:empty:before {
+[contenteditable][data-placeholder]:empty::before {
     content: attr(data-placeholder);
     color: rgb(var(--bs-secondary-rgb));
     pointer-events: none;

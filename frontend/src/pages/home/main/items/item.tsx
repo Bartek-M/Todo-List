@@ -71,7 +71,7 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
                         innerRef={notesRef}
                         styles={{ color: "var(--bs-secondary)", margin: "0 0.5rem 1rem 1.5rem" }}
                         multiline={true}
-                        charLimit={255}
+                        charLimit={512}
                     />
                     <ItemOptions item={item} />
                 </>
