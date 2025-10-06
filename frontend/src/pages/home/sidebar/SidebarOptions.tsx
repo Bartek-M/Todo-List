@@ -2,7 +2,7 @@ import { SVG, Link } from "@/components";
 import { useModal } from "@/context";
 
 
-export function Options() {
+export function SidebarOptions() {
     const [, setModal] = useModal()!;
 
     return (

@@ -1,4 +1,4 @@
-export { NavBase } from "./navBase";
-export { DragList } from "./dragList";
-export { AuthRoute } from "./authRoute"
-export { ModalBase } from "./modalBase";
+export { NavBase } from "./NavBase";
+export { DragList } from "./DragList";
+export { AuthRoute } from "./AuthRoute"
+export { ModalBase } from "./ModalBase";

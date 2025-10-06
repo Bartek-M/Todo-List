@@ -5,6 +5,8 @@ export type {
 
 export type { 
     dragItemProps, 
+    updatedDragItems,
+    dragEndFunc,
     childProps,
 } from "./components";
 

@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useTodoLists } from "@/context";
 
-import { ItemTitle, ItemOptions } from ".";
 import { TextInput } from "@/components";
 import { dragItemProps } from "@/types";
 import { getDragProps } from "@/utils";
+
+import { ItemOptions } from "../itemOptions";
+import { ItemTitle } from "./title";
 
 
 export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProps) {

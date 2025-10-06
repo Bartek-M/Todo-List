@@ -1,7 +1,7 @@
 import { useActive } from "@/context";
 
-import { Lists } from "./lists";
-import { Options } from "./options";
+import { Lists } from "./Lists";
+import { SidebarOptions } from "./SidebarOptions";
 
 export function Sidebar() {
     const [active,] = useActive()!;
@@ -9,7 +9,7 @@ export function Sidebar() {
     return (
         <div className={`d-flex flex-column bg-body-tertiary h-100 ${active?.opened ? "hidden" : ""}`} id="sidebar">
             <Lists />
-            <Options />
+            <SidebarOptions />
         </div>
     );
 }

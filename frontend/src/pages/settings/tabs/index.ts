@@ -1,4 +1,4 @@
-export { AccountTab } from "./accountTab";
-export { GeneralTab } from "./generalTab";
-export { ThemeTab } from "./themeTab";
-export { AboutTab } from "./aboutTab";
+export { AccountTab } from "./AccountTab";
+export { GeneralTab } from "./GeneralTab";
+export { ThemeTab } from "./ThemeTab";
+export { AboutTab } from "./AboutTab";

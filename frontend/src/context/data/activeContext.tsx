@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState, useContext, useEffect } from "react";
 
-import { useUser } from "./userContext";
+import { useUser } from "./UserContext";
 import { childProps } from "@/types";
 
 

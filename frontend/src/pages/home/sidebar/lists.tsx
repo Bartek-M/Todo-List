@@ -1,8 +1,8 @@
 import { useActive, useTodoLists } from "@/context";
 
 import { DragList } from "@/components";
-import { ListItem } from "./listItem";
-import { dragListProps } from "@/types";
+import { ListItem } from "./ListItem";
+import { dragEndFunc } from "@/types";
 import { apiFetch } from "@/utils";
 
 
@@ -10,7 +10,7 @@ export function Lists() {
     const [todoLists, setTodoLists] = useTodoLists()!;
     const [active, setActive] = useActive()!;
 
-    const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
+    const handleDragEnd: dragEndFunc = (newLists, updatedItems) => {
         setTodoLists(newLists);
         if (updatedItems[active.id] !== undefined) setActive((prev) => ({ ...prev, index: updatedItems[active.id] }));
 

@@ -1,1 +1,1 @@
-export { NewList } from "./newList"
+export { NewList } from "./NewList"

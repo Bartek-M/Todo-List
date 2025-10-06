@@ -1,7 +1,11 @@
+export { NewItemButton } from "./NewItemButton";
+
 import { SVG } from "@/components";
-import { ListSelect, DatePick } from ".";
 import { defaultIconFill } from "@/defaults";
 import { itemType } from "@/types";
+
+import { DatePick } from "./DatePick";
+import { ListSelect } from "./ListSelect";
 
 
 export function ItemOptions({ item }: { item: itemType; }) {

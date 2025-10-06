@@ -2,14 +2,14 @@ import { useState } from "react";
 import { DndContext, DragEndEvent, DragOverlay, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 
+import { updatedDragItems, dragEndFunc } from "@/types";
 
-type updatedItemsType = { [id: string]: number; };
 
 interface dragListProps {
     Element: any;
     title: string;
     list: any[];
-    dragEnd: (newList: any[], updatedItems: updatedItemsType) => void;
+    dragEnd: dragEndFunc;
     listProps?: any;
 }
 
@@ -29,7 +29,7 @@ export function DragList({ Element, title, list, dragEnd, listProps = {} }: drag
         let overIndex = list.findIndex(item => item.id == over.id);
 
         const newLists = arrayMove(list, draggedIndex, overIndex);
-        let updatedItems: updatedItemsType = {};
+        let updatedItems: updatedDragItems = {};
         for (let i = Math.min(draggedIndex, overIndex); i < newLists.length; i++) {
             updatedItems[newLists[i].id] = i;
         }

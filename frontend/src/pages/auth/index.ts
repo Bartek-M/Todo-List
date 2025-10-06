@@ -1,3 +1,3 @@
-export { Login } from "./login";
-export { Register } from "./register";
-export { Logout } from "./logout";
+export { Login } from "./Login";
+export { Register } from "./Register";
+export { Logout } from "./Logout";

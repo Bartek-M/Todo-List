@@ -1,5 +1,5 @@
-export { DateInput } from "./date"
-export { Select } from "./select"
-export { TextInput } from "./text"
+export { DateInput } from "./DateInput"
+export { Select } from "./Select"
+export { TextInput } from "./TextInput"
 
-export { SlidingInput } from "./slidingInput"
+export { SlidingInput } from "./SlidingInput"

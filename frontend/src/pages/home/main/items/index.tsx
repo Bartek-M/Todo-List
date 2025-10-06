@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 
-import { Item } from "./item";
 import { DragList } from "@/components";
 import { useTodoLists } from "@/context";
 import { apiFetch } from "@/utils";
-import { dragListProps, stringState, todoListType } from "@/types";
+import { dragEndFunc, stringState, todoListType } from "@/types";
+
+import { Item } from "./Item";
 
 
 export function ItemsList({ todoList }: { todoList: todoListType; }) {
     const [, setTodoLists] = useTodoLists()!;
     const [editing, setEditing] = useState<stringState>(null);
 
-    const handleDragEnd: dragListProps["dragEnd"] = (newLists, updatedItems) => {
+    const handleDragEnd: dragEndFunc = (newLists, updatedItems) => {
         setTodoLists((prev) => {
             return prev.map(list =>
                 list.id === todoList.id
