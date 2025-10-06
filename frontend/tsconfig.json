@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
         "composite": true,
         "target": "ES2020",
         "module": "ESNext",
@@ -22,8 +21,8 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
         "paths": {
-            "@/*": ["src/*"],
-            "/assets/*": ["assets/*"]
+            "@/*": ["./src/*"],
+            "/assets/*": ["./assets/*"]
         }
     },
     "include": ["src/", "vite.config.ts"]

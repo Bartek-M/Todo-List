@@ -28,7 +28,12 @@ export function Item({ item, dragOverlay = false, listProps = {} }: dragItemProp
         const titleInput = titleRef.current;
         const notesInput = notesRef.current;
 
+        const handleEsc = (e: KeyboardEvent) => { if (e.key == "Escape") setEditing(null); };
+        window.addEventListener("keydown", handleEsc);
+
         return () => {
+            window.removeEventListener("keydown", handleEsc);
+
             const editedItem = {
                 text: titleInput?.innerText ?? "",
                 notes: notesInput?.innerText ?? ""
